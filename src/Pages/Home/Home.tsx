@@ -1,23 +1,34 @@
 import React from 'react';
 import logo from './logo.svg';
-import '../../CSS/Home.css';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Paper, Stack, Typography, useTheme } from '@mui/material';
+
+import {PageBox, DisplayBox} from '../Common/CommonElements';
 
 function Home() {
 
   const theme = useTheme();
 
   return (
-    <Box sx={{
-      background: theme.palette.background.default,
-      color: theme.palette.text.primary
-    }}>
-        
-        <Typography variant='h2' className='App-header' >
-          I'm working on it
-        </Typography>
+    <PageBox>
+        <Stack direction="column" spacing='20vh'>
+          
+          <Paper/>
 
-    </Box>
+          <DisplayBox>
+            
+            <Typography variant='h1'>
+              Welcome
+            </Typography>
+
+            <Typography variant='body1'>
+              I'm working on it
+            </Typography>
+
+          </DisplayBox>
+
+        </Stack>
+
+    </PageBox>
   );
 }
 

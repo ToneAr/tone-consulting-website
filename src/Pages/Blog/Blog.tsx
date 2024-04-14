@@ -1,4 +1,5 @@
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Paper, Stack, Typography, useTheme } from '@mui/material';
+import {PageBox, DisplayBox} from '../Common/CommonElements';
 
 
 export default function Blog() {
@@ -6,15 +7,26 @@ export default function Blog() {
   const theme = useTheme();
 
   return (
-    <Box sx={{
-      background: theme.palette.background.default,
-      color: theme.palette.text.primary
-    }}>
+    <PageBox>
         
-        <Typography variant='h2' className='App-header' >
-          I'm blogging now
-        </Typography>
+        <Stack direction="column" spacing='20vh'>
+          
+          <Paper/>
 
-    </Box>
+          <DisplayBox>
+
+            <Typography variant='h1'>
+              Blog
+            </Typography>
+
+            <Typography variant='body1'>
+              Rambling on and on
+            </Typography>
+
+          </DisplayBox>
+
+        </Stack>
+
+    </PageBox>
   );
   }
