@@ -1,18 +1,14 @@
-import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { Link } from "react-router-dom";
-
-import {
-  useHref,
-  useLinkClickHandler,
-  useNavigate,
-} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { IconButton, useTheme } from '@mui/material';
 
 
 interface IPageObjArray {
@@ -21,7 +17,7 @@ interface IPageObjArray {
 };
 const pageObjectArray: Array<IPageObjArray> = [
     {page:'CV',
-        key:'CV'
+        key:'About me'
     },
     {page:'Projects',
         key:'Projects'
@@ -31,12 +27,15 @@ const pageObjectArray: Array<IPageObjArray> = [
     }
 ];
 
-function Navbar() {
+function Navbar({ colorMode } : {colorMode: any}) {
+  
   const navigate = useNavigate();
+  const theme = useTheme();
+
   return (
     <AppBar position="static" >
       <Container maxWidth="xl" >
-        <Toolbar disableGutters >
+        <Toolbar disableGutters  >
           <Link to="/" style={{textDecoration: 'none',}}>
             <Typography
               variant="h6"
@@ -72,6 +71,13 @@ function Navbar() {
             ))}
 
           </Box>
+            <Box>
+
+          <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          </IconButton>
+          
+      </Box>
 
         </Toolbar>
       </Container>

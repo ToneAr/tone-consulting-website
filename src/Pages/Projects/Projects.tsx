@@ -1,10 +1,20 @@
+import { Box, Typography, useTheme } from "@mui/material";
 
 
 export default function Projects() {
 
-    return (
-      <header className="App-header">
-          <p>Projects go here</p>
-      </header>
-    );
+  const theme = useTheme();
+
+  return (
+    <Box sx={{
+      background: theme.palette.background.default,
+      color: theme.palette.text.primary
+    }}>
+        
+        <Typography variant='h2' className='App-header' >
+          Projecting
+        </Typography>
+
+    </Box>
+  );
   }
