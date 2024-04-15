@@ -1,5 +1,5 @@
 import { Box, Paper, Stack, Typography, useTheme } from '@mui/material';
-import {PageBox, DisplayBox} from '../Common/CommonElements';
+import {PageBox, DisplayPanel, PageStack} from '../Common/CommonElements';
 
 
 export default function Blog() {
@@ -9,11 +9,11 @@ export default function Blog() {
   return (
     <PageBox>
         
-        <Stack direction="column" spacing='20vh'>
+        <PageStack>
           
           <Paper/>
 
-          <DisplayBox>
+          <DisplayPanel>
 
             <Typography variant='h1'>
               Blog
@@ -23,9 +23,9 @@ export default function Blog() {
               Rambling on and on
             </Typography>
 
-          </DisplayBox>
+          </DisplayPanel>
 
-        </Stack>
+        </PageStack>
 
     </PageBox>
   );

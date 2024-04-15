@@ -36,6 +36,7 @@
   height: 120;
 }
 
+
 .paper {
   display: flex;
   flex-direction: column;
@@ -43,7 +44,25 @@
   justify-content: baseline;
   font-size: calc(10px + 2vmin);
   min-width: 80vw;
+  max-width: 88vw;
   min-height: 20vh;
+}
+
+.paper-row {
+  display: flex;
+  justify-content: center;
+}
+
+.link {
+  color: aquamarine;
+}
+
+.link:visited {
+  color: rgb(59, 121, 112);
+}
+
+.link:active {
+  color: rgb(173, 189, 101);
 }
 
 .App-link {

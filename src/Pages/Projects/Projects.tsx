@@ -1,6 +1,6 @@
 import { Box, Paper, Stack, Typography, useTheme } from "@mui/material";
 
-import {PageBox, DisplayBox} from '../Common/CommonElements';
+import {PageBox, DisplayPanel, PageStack} from '../Common/CommonElements';
 
 export default function Projects() {
 
@@ -9,11 +9,11 @@ export default function Projects() {
   return (
     <PageBox>
         
-        <Stack direction="column" spacing='20vh'>
+        <PageStack>
           
           <Paper/>
 
-          <DisplayBox>
+          <DisplayPanel>
 
             <Typography variant='h1'>
               Projects
@@ -23,9 +23,9 @@ export default function Projects() {
               I'm just projecting
             </Typography>
 
-          </DisplayBox>
+          </DisplayPanel>
 
-        </Stack>
+        </PageStack>
 
     </PageBox>
   );

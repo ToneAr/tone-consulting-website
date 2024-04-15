@@ -2,11 +2,9 @@ import { Outlet } from "react-router-dom";
 import Navbar from './Pages/Common/Navbar';
 import { ThemeProvider, createTheme, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
-import IconButton from '@mui/material/IconButton';
-import Box from '@mui/material/Box';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
+
 import './CSS/App.css';
+
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 export default function App () {
@@ -29,7 +27,10 @@ export default function App () {
                 },
             },
             typography: {
-                fontFamily: "\"Urbanist\""
+                fontFamily: "\"Urbanist\"",
+                body1 : {
+                    fontSize: 20
+                }
             }
         }),
         [mode]

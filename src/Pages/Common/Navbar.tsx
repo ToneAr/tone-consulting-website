@@ -16,7 +16,7 @@ interface IPageObjArray {
     key: string;
 };
 const pageObjectArray: Array<IPageObjArray> = [
-    {page:'CV',
+    {page:'About',
         key:'About me'
     },
     {page:'Projects',
@@ -74,7 +74,7 @@ function Navbar({ colorMode } : {colorMode: any}) {
             <Box>
 
           <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+              {theme.palette.mode === 'light' ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
           
       </Box>
