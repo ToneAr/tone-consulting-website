@@ -5,12 +5,16 @@ import {PageBox, DisplayPanel, PageStack, OutlinedPaper} from '../Common/CommonE
 import { useState } from "react";
 
 import phoneIcon from'../../Resources/telephone.png';
-import linkedInIcon from'../../Resources/social.png';
+// import linkedInIcon from'../../Resources/social.png';
 import mailIcon from'../../Resources/mail.png';
+import linkedInIcon from'../../Resources/linkedin.png';
+import githubIcon from '../../Resources/github.png';
 
 import phoneIconDark from'../../Resources/dark-telephone.png';
 import linkedInIconDark from'../../Resources/dark-social.png';
 import mailIconDark from'../../Resources/dark-mail.png';
+// import linkedInIconDark from'../../Resources/dark-linkedin.png';
+// import githubIconDark from '../../Resources/dark-github.png';
 
 export default function CV() {
   const AnimatedTypography = animated(Typography);
@@ -51,8 +55,11 @@ export default function CV() {
     }[displayText] ?? 'Software Development');
   };
   return (
-    <PageBox>
-      <PageStack>
+    <PageBox className='background-box'>
+      
+      
+
+      <PageStack spacing='35vh'>
         
         <Paper/>
 
@@ -81,43 +88,107 @@ export default function CV() {
           </OutlinedPaper>
           
           <br />
+          </DisplayPanel>
 
-          <Grid container direction='row' justifyContent='space-around' sx={{maxWidth: '75vw', textAlign: 'center'}}>
-            <Grid item xs={3}>
-              <OutlinedPaper className='paper-row'>
-                <Stack spacing={2}>
-                  <Typography variant='h5' sx={{color: theme.palette.text.secondary}}>Contact Details</Typography>
-                  <br/>
-                  <Typography variant='body1'>
-                    <img src={theme.palette.mode==='dark' ? mailIconDark : mailIcon} width={20}/>
-                    : <a  className='link' href='mailto:tonyaris@outlook.com' >tonyaris@outlook.com</a></Typography>
-                  <Typography variant='body1'>
-                    <img src={theme.palette.mode==='dark' ? phoneIconDark : phoneIcon} width={20}/>
-                    : +(44) 747 868 2747</Typography>
-                </Stack>
-              </OutlinedPaper>
-            </Grid>
-            <Grid item xs={3}>
-              <OutlinedPaper className='paper-row'>
-                <Stack spacing={2}>
-                  <Typography variant='h5' sx={{color: theme.palette.text.secondary}}>LinkedIn</Typography>
-                  <br/>
-                  <Typography variant='body1'>
-                    <img src={theme.palette.mode==='dark' ? linkedInIconDark : linkedInIcon} width={20}/>
-                    : <a className='link' href='https://www.linkedin.com/in/antonis-aristeidou'>Antonis Aristeidou</a>
-                  </Typography>
-                </Stack>
-              </OutlinedPaper>
-            </Grid>
-            <Grid item xs={3}>
-              <OutlinedPaper className='paper-row'>
-                <Typography variant='h5' sx={{color: theme.palette.text.secondary}}>Social</Typography>
-                <br/>
-              </OutlinedPaper>
-            </Grid>
-          </Grid>
 
+          <DisplayPanel>
+
+            <Typography variant='h2'>
+              Details
+            </Typography>
+
+            <br/>
+
+            <Grid container spacing={10} direction='row' justifyContent='space-around' sx={{maxWidth: '75vw', textAlign: 'center'}}>
+              
+              <Grid item xs={6}>
+                <OutlinedPaper className='paper-row'>
+                  <Stack spacing={2} >
+                    
+                    <Typography variant='h5' sx={{color: theme.palette.text.secondary}}>
+                      Contact Details
+                    </Typography>
+                    <br/>
+
+                    <Grid container spacing={2} sx={{justifyContent:'center', textAlign: 'center',}}>
+                        
+                          <Grid item xs={2} sx={{ width:'1vw',textAlign: 'right'}} >
+                            <Typography variant='body1'>
+                              <img src={theme.palette.mode==='dark' ? mailIconDark : mailIcon} width={30}/>
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={10} sx={{width:'1vw' ,textAlign: 'left'}}>
+                            <Typography variant='body1'>
+                              <a  className='link' href='mailto:tonyaris@outlook.com' >
+                                tonyaris@outlook.com
+                              </a>
+                            </Typography>
+                          </Grid>
+                     
+                          <Grid item xs={2} sx={{textAlign: 'right'}} >
+                            <Typography variant='body1'>
+                              <img src={theme.palette.mode==='dark' ? phoneIconDark : phoneIcon} width={30}/>
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={10} sx={{textAlign: 'left'}}>
+                            <Typography variant='body1'>
+                              <a className='link' href='tel:+447478682747'>+(44) 747 868 2747</a>
+                            </Typography>
+                          </Grid>
+
+                    </Grid>
+
+                  </Stack>
+                </OutlinedPaper>
+              </Grid>
+
+              <Grid item xs={6}>
+                <OutlinedPaper className='paper-row'>
+                  
+                  <Stack spacing={2}>
+                    
+                    <Typography variant='h5' sx={{color: theme.palette.text.secondary}}>Links</Typography>
+                    <br/>
+
+                    <Grid container spacing={2} sx={{justifyContent:'center', textAlign: 'center',}}>
+                      
+                      <Grid item xs={2} sx={{textAlign: 'right'}} >
+                        <Typography variant='body1'>
+                          <img src={theme.palette.mode==='dark' ? linkedInIconDark : linkedInIcon} width={30}/>
+                        </Typography>
+                      </Grid>
+
+                      <Grid item xs={10} sx={{textAlign: 'left'}}>
+                        <Typography variant='body1'>
+                          <a className='link' href='https://www.linkedin.com/in/antonis-aristeidou'>Antonis Aristeidou</a>
+                        </Typography>
+                      </Grid>
+
+                      <Grid item xs={2} sx={{textAlign: 'right'}} >
+                        <Typography variant='body1'>
+                          <img src={theme.palette.mode==='dark' ? linkedInIconDark : githubIcon} width={33}/>
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={10} sx={{textAlign: 'left'}}>
+                        <Typography variant='body1'>
+                          <a className='link' href='https://www.github.com/ToneAr'>ToneAr</a>
+                        </Typography>
+                      </Grid>
+                      
+                    </Grid>
+
+                    
+                  </Stack>
+
+                </OutlinedPaper>
+              </Grid>
+              
+            </Grid>
+
+            <br/>
         </DisplayPanel>
+
+        <Paper/>
 
       </PageStack>
     </PageBox>

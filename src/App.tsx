@@ -54,8 +54,15 @@ export default function App () {
     return ( 
         <ColorModeContext.Provider value={colorMode}>
             <ThemeProvider theme={theme}>
+                
                 <Navbar colorMode={colorMode} />
+                
                 <Outlet />
+                {/* <div className='video'>
+                  <video autoPlay muted loop>
+                      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                  </video>
+                </div> */}
             </ThemeProvider>
         </ColorModeContext.Provider>
     );

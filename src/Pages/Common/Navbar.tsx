@@ -33,17 +33,17 @@ function Navbar({ colorMode } : {colorMode: any}) {
   const theme = useTheme();
 
   return (
-    <AppBar position="static" >
+    <AppBar position="relative" >
       <Container maxWidth="xl" >
         <Toolbar disableGutters  >
-          <Link to="/" style={{textDecoration: 'none',}}>
+          <Link to="/" style={{textDecoration: 'none'}}>
             <Typography
               variant="h6"
               noWrap
               component="a"
               sx={{
                 mr: 2,
-                display: { xs: 'none', md: 'flex' },
+                display: { md: 'flex' },
                 fontWeight: 700,
                 letterSpacing: '.3rem',
                 color: 'white',
@@ -54,7 +54,7 @@ function Navbar({ colorMode } : {colorMode: any}) {
             </Typography>       
           </Link>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: {  md: 'flex' } }}>
             
             {pageObjectArray.map((obj) => (
 
