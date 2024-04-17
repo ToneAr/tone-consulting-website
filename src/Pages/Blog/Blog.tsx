@@ -4,6 +4,8 @@ import {PageBox, DisplayPanel, PageStack} from '../Common/CommonElements';
 
 export default function Blog() {
 
+  document.title = "TONE : Other";
+
   const theme = useTheme();
 
   return (

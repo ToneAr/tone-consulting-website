@@ -12,6 +12,9 @@ import {
 
 function Home() {
 
+  window.scroll(0, 100);
+  document.title = "TONE";
+
   const theme = useTheme();
   
   const [displayText, setDisplayText] = useState("Adapting to");
@@ -65,12 +68,12 @@ function Home() {
             <br />
 
               <Grid container spacing={1} sx={{ maxWidth:'80%', textAlign: 'center'}} >
-                <Grid item xs={4} >
+                <Grid item xs={4.3} >
                   <AnimatedTypography variant='h5' sx={{color:theme.palette.text.secondary, textAlign: 'right'}} style={props}>
                     {displayText}
                   </AnimatedTypography>
                 </Grid>
-                <Grid item xs={7} >
+                <Grid item xs={7.7} >
                   <Typography variant='h6' sx={{color:theme.palette.text.secondary, textAlign: 'left' }}>a turbulent today, in the pursuit of a peaceful tomorrow</Typography>
                 </Grid>
               </Grid>
@@ -85,24 +88,6 @@ function Home() {
             <br />
 
           </DisplayPanel>
-
-          {/* <Grid container direction='row' justifyContent='space-around' sx={{minWidth: '80vw', maxWidth: '88vw'}}>
-            <Grid item xs={3}>
-              <DisplayPanel className='paper-row'>
-                <Typography variant='h5'>1</Typography>
-              </DisplayPanel>
-            </Grid>
-            <Grid item xs={3}>
-              <DisplayPanel className='paper-row'>
-                <Typography variant='h5'>2</Typography>
-              </DisplayPanel>
-            </Grid>
-            <Grid item xs={3}>
-              <DisplayPanel className='paper-row'>
-                <Typography variant='h5'>3</Typography>
-              </DisplayPanel>
-            </Grid>
-          </Grid> */}
 
         </PageStack>
 

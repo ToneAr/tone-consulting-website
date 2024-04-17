@@ -8,12 +8,13 @@ import './CSS/App.css';
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 export default function App () {
+
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
     const storedTheme = localStorage.getItem('theme') === 'dark' ? 'dark' : (prefersDarkMode ? 'dark' : 'light');
 
     const [mode, setMode] = React.useState<'light'|'dark'>(storedTheme);
     
-    const theme = React.useMemo(() => 
+    const theme = React.useMemo(() =>
         createTheme({
             palette: {
                 mode,
@@ -51,18 +52,20 @@ export default function App () {
 
     console.log("Color mode:", mode);
 
-    return ( 
+    return (
         <ColorModeContext.Provider value={colorMode}>
             <ThemeProvider theme={theme}>
                 
                 <Navbar colorMode={colorMode} />
                 
                 <Outlet />
+
                 {/* <div className='video'>
                   <video autoPlay muted loop>
                       <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
                   </video>
                 </div> */}
+
             </ThemeProvider>
         </ColorModeContext.Provider>
     );

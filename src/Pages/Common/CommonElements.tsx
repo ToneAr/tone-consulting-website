@@ -5,7 +5,8 @@ type props = {
   className?: any,
   sx?: Object,
   in? : boolean,
-  spacing?: number | string
+  spacing?: number | string,
+  elevation?: number
 };
 
 function PageBox ( {className = "background-box", ...props}:props ) {
@@ -29,11 +30,11 @@ function PageStack ( props:props ) {
     );
 };
 
-function DisplayPanel ( {className = "paper", ...props}: props ) {
+function DisplayPanel ( {className = "paper", elevation = 10, ...props}: props ) {
     const theme = useTheme();
     return (
         <Grow in={ props.in ?? true } appear={ true }  >
-          <Paper className={className} elevation={10} sx={{
+          <Paper className={className} elevation={elevation} sx={{
             background: theme.palette.mode === 'dark' ? "#212121" : "#eeeeee",
             padding:2,
             ...props.sx

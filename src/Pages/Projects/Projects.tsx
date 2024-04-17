@@ -4,6 +4,8 @@ import {PageBox, DisplayPanel, PageStack} from '../Common/CommonElements';
 
 export default function Projects() {
 
+  document.title = "TONE : Projects";
+
   const theme = useTheme();
 
   return (

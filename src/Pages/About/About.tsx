@@ -1,8 +1,10 @@
-import { Grid, Paper, Stack, Typography, useTheme } from "@mui/material";
-import { useSpring, animated } from '@react-spring/web';
+import { Box, Grid, Paper, Stack, Typography, duration, useTheme } from "@mui/material";
+import { useSpring, animated, useScroll } from '@react-spring/web';
 
 import {PageBox, DisplayPanel, PageStack, OutlinedPaper} from '../Common/CommonElements';
-import { useState } from "react";
+import { Component, useEffect, useState } from "react";
+
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import phoneIcon from'../../Resources/telephone.png';
 // import linkedInIcon from'../../Resources/social.png';
@@ -13,14 +15,46 @@ import githubIcon from '../../Resources/github.png';
 import phoneIconDark from'../../Resources/dark-telephone.png';
 import linkedInIconDark from'../../Resources/dark-social.png';
 import mailIconDark from'../../Resources/dark-mail.png';
+import { Opacity } from "@mui/icons-material";
 // import linkedInIconDark from'../../Resources/dark-linkedin.png';
 // import githubIconDark from '../../Resources/dark-github.png';
 
-export default function CV() {
-  const AnimatedTypography = animated(Typography);
+
+function TitleCard ( props: any ) {
+  
   const theme = useTheme();
+  const AnimatedTypography = animated(Typography);
+  const AnimatedBox = animated(Box);
+
+  const { scrollYProgress } = useScroll();
+  const scrollSpring: any = useSpring({
+    from: {
+      opacity: 0.0
+    }
+    ,
+    to: [{
+      opacity: 0.5
+    },{
+      opacity: 0.0
+    }],
+    loop: true,
+    delay: 5000,
+    config: {
+      duration: 2000
+    }
+  });
+
+  function incrementSubtitle () {
+    setDisplayText({
+      'Software Development': 'Consulting',
+      'Consulting'          : 'Theoretical Physics',
+      'Theoretical Physics' : 'Optimization',
+      'Optimization'        : 'Software Development'
+    }[displayText] ?? 'Software Development');
+  };
+
   const [displayText, setDisplayText] = useState("Software Development");
-  const props = useSpring({
+  const spring = useSpring({
     from:{ 
       opacity: 0,
       x: -200 },
@@ -41,153 +75,170 @@ export default function CV() {
       tension: 500
     }
   });
-  const spring: any = useSpring({
-    from: 0
-    ,
-    to: 10,
-  })
-  function incrementSubtitle () {
-    setDisplayText({
-      'Software Development': 'Consulting',
-      'Consulting'          : 'Physics',
-      'Physics'             : 'Math',
-      'Math'                : 'Software Development'
-    }[displayText] ?? 'Software Development');
+
+  return <>
+    <Box className={props.className} sx={{textAlign:'center', ...props.sx}}>
+      <DisplayPanel>
+
+        <Typography variant='h1'>
+          Antonis Aristeidou
+        </Typography>
+
+        <br />
+
+        <Typography>
+          <AnimatedTypography variant='h4' sx={{color:theme.palette.text.secondary}} style={spring}>
+            {displayText}
+          </AnimatedTypography>
+        </Typography>
+
+        <br />
+
+        <OutlinedPaper>
+          <Typography variant='body1' sx={{justifyContent:'center', textAlign:'center', width: '70vw'}}>
+            Harnessing a rich blend of theoretical physics and multifaceted professional expertise,
+            I am a dynamic consultant and developer committed to crafting innovative software solutions,
+            underscored by a relentless pursuit of excellence and growth across a diverse range of sectors.
+          </Typography>
+        </OutlinedPaper>
+
+        <br />
+
+      </DisplayPanel>
+      <br />
+      <AnimatedBox style={scrollSpring}>
+        <Typography><KeyboardArrowDownIcon sx={{height:100}}/></Typography>
+      </AnimatedBox> 
+    </Box>
+  </>
+};
+
+function ContactCard ( props: any ) {
+  const theme = useTheme();
+  
+  interface IContactObj {
+    text: string,
+    href: string,
+    icon: {
+      default: string,
+      dark: string
+    }
   };
-  return (
-    <PageBox className='background-box'>
-      
-      
+  interface IContactColumn {
+    title: string,
+    data: IContactObj[],
+  };
+  interface IContactsGrid {
+    details : IContactColumn,
+    links : IContactColumn,
+  };
 
-      <PageStack spacing='35vh'>
-        
-        <Paper/>
-
-        <DisplayPanel>
-
-          <Typography variant='h1'>
-            Antonis Aristeidou
-          </Typography>
-
-          <br />
-            
-           <Typography>
-            <AnimatedTypography variant='h4' sx={{color:theme.palette.text.secondary}} style={props}>
-              {displayText}
-            </AnimatedTypography>
-          </Typography>
-
-          <br />
-
-          <OutlinedPaper>
-            <Typography variant='body1' sx={{justifyContent:'center', textAlign:'center', width: '70vw'}}>
-              Harnessing a rich blend of theoretical physics and multifaceted professional expertise,
-              I am a dynamic consultant and developer committed to crafting innovative software solutions,
-              underscored by a relentless pursuit of excellence and growth across a diverse range of sectors.
-            </Typography>
-          </OutlinedPaper>
-          
-          <br />
-          </DisplayPanel>
-
-
-          <DisplayPanel>
-
-            <Typography variant='h2'>
-              Details
-            </Typography>
-
-            <br/>
-
-            <Grid container spacing={10} direction='row' justifyContent='space-around' sx={{maxWidth: '75vw', textAlign: 'center'}}>
-              
-              <Grid item xs={6}>
+  const contactsObjectArray: IContactsGrid = {
+    details : {
+      title: "Contact Details",
+      data: [{text: 'tonyaris@outlook',
+        href: 'mailto:tonyaris@outlook.com',
+        icon: {
+          default: mailIcon,
+          dark: mailIconDark
+        }
+      },
+      {text: '+(44) 747 868 2747',
+        href: 'tel:+447478682747',
+        icon: {
+          default: phoneIcon,
+          dark: phoneIconDark
+        }
+      }],
+    },
+    links : {
+      title:"Links",
+      data:[{text: 'Antonis Aristeidou',
+        href: 'https://www.linkedin.com/in/antonis-aristeidou',
+        icon: {
+          default: linkedInIcon,
+          dark: linkedInIconDark
+        }
+      },
+      {text: 'ToneAr',
+        href: 'https://www.github.com/ToneAr',
+        icon: {
+          default: githubIcon,
+          dark: githubIcon
+        }
+      }],
+    }
+  };
+  
+  return <DisplayPanel>
+    <Typography variant='h2'>
+      Details
+    </Typography>
+    <br/>
+    <Grid container spacing={10} direction='row' justifyContent='space-around' sx={{maxWidth: '75vw', textAlign: 'center'}}>
+        {
+          Object.values(contactsObjectArray).map( (values) => {
+              return <Grid item xs={6}>
                 <OutlinedPaper className='paper-row'>
                   <Stack spacing={2} >
-                    
+
                     <Typography variant='h5' sx={{color: theme.palette.text.secondary}}>
-                      Contact Details
+                      {`${values.title}`}
                     </Typography>
+
                     <br/>
 
                     <Grid container spacing={2} sx={{justifyContent:'center', textAlign: 'center',}}>
-                        
-                          <Grid item xs={2} sx={{ width:'1vw',textAlign: 'right'}} >
-                            <Typography variant='body1'>
-                              <img src={theme.palette.mode==='dark' ? mailIconDark : mailIcon} width={30}/>
-                            </Typography>
-                          </Grid>
-                          <Grid item xs={10} sx={{width:'1vw' ,textAlign: 'left'}}>
-                            <Typography variant='body1'>
-                              <a  className='link' href='mailto:tonyaris@outlook.com' >
-                                tonyaris@outlook.com
-                              </a>
-                            </Typography>
-                          </Grid>
-                     
-                          <Grid item xs={2} sx={{textAlign: 'right'}} >
-                            <Typography variant='body1'>
-                              <img src={theme.palette.mode==='dark' ? phoneIconDark : phoneIcon} width={30}/>
-                            </Typography>
-                          </Grid>
-                          <Grid item xs={10} sx={{textAlign: 'left'}}>
-                            <Typography variant='body1'>
-                              <a className='link' href='tel:+447478682747'>+(44) 747 868 2747</a>
-                            </Typography>
-                          </Grid>
-
+                      {
+                        values.data.map( (obj: IContactObj) => {
+                            return<>
+                              <Grid item xs={3.5} sx={{ textAlign: 'right'}} >
+                                <Typography variant='body1'>
+                                  <img src={theme.palette.mode==='dark' ? obj.icon.dark : obj.icon.default} width={30}/>
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={8.5} sx={{textAlign: 'left'}}>
+                                <Typography variant='body1'>
+                                  <a  className='link' href='mailto:tonyaris@outlook.com' >
+                                    {`${obj.text}`}
+                                  </a>
+                                </Typography>
+                              </Grid>
+                            </>
+                          }
+                        )
+                      }
                     </Grid>
 
                   </Stack>
                 </OutlinedPaper>
               </Grid>
+            }
+          )
+        }
+    </Grid>
+    <br/>
+  </DisplayPanel>
+}; 
 
-              <Grid item xs={6}>
-                <OutlinedPaper className='paper-row'>
-                  
-                  <Stack spacing={2}>
-                    
-                    <Typography variant='h5' sx={{color: theme.palette.text.secondary}}>Links</Typography>
-                    <br/>
+export default function About() {
+  
+  window.scroll(0, 100);
+  document.title = "TONE : About me";
 
-                    <Grid container spacing={2} sx={{justifyContent:'center', textAlign: 'center',}}>
-                      
-                      <Grid item xs={2} sx={{textAlign: 'right'}} >
-                        <Typography variant='body1'>
-                          <img src={theme.palette.mode==='dark' ? linkedInIconDark : linkedInIcon} width={30}/>
-                        </Typography>
-                      </Grid>
+  const theme = useTheme();
+  const AnimatedTypography = animated(Typography);
+  const AnimatedBox = animated(Box);
 
-                      <Grid item xs={10} sx={{textAlign: 'left'}}>
-                        <Typography variant='body1'>
-                          <a className='link' href='https://www.linkedin.com/in/antonis-aristeidou'>Antonis Aristeidou</a>
-                        </Typography>
-                      </Grid>
+  return (
+    <PageBox className='background-box'>
+      <PageStack spacing='30vh'>
 
-                      <Grid item xs={2} sx={{textAlign: 'right'}} >
-                        <Typography variant='body1'>
-                          <img src={theme.palette.mode==='dark' ? linkedInIconDark : githubIcon} width={33}/>
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={10} sx={{textAlign: 'left'}}>
-                        <Typography variant='body1'>
-                          <a className='link' href='https://www.github.com/ToneAr'>ToneAr</a>
-                        </Typography>
-                      </Grid>
-                      
-                    </Grid>
-
-                    
-                  </Stack>
-
-                </OutlinedPaper>
-              </Grid>
-              
-            </Grid>
-
-            <br/>
-        </DisplayPanel>
-
+        <Paper/>
+        
+          <TitleCard />
+          <ContactCard />
+        
         <Paper/>
 
       </PageStack>
