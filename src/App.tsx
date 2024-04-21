@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from './Pages/Common/Navbar';
-import { ThemeProvider, createTheme, useMediaQuery, useTheme } from "@mui/material";
+import { CssBaseline, ScopedCssBaseline, ThemeProvider, createTheme, darkScrollbar, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 
 import './CSS/App.css';
@@ -22,7 +22,7 @@ export default function App () {
                     main: '#126b68',
                 },
                 secondary: {
-                    main: '#113769',
+                    main: '#2db5a3',
                     light: '#194d91',
                     contrastText: '#47008F',
                 },
@@ -32,7 +32,7 @@ export default function App () {
                 body1 : {
                     fontSize: 20
                 }
-            }
+            },
         }),
         [mode]
     );
@@ -54,19 +54,15 @@ export default function App () {
 
     return (
         <ColorModeContext.Provider value={colorMode}>
+
             <ThemeProvider theme={theme}>
                 
                 <Navbar colorMode={colorMode} />
                 
                 <Outlet />
 
-                {/* <div className='video'>
-                  <video autoPlay muted loop>
-                      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
-                  </video>
-                </div> */}
-
             </ThemeProvider>
+
         </ColorModeContext.Provider>
     );
 
