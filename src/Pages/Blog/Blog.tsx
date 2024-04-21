@@ -10,7 +10,7 @@ export default function Blog() {
 
   useEffect(() => {
     document.title = "TONE : Other";
-    window.scrollBy(0, 100);
+    window.scrollBy(0, 70);
   }, []);
 
   return (

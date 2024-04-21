@@ -1,5 +1,8 @@
 import { Box, Grow, Paper, Stack, useTheme } from "@mui/material";
-import { animated, useInView, useSpring } from "react-spring";
+import { animated, useInView, useSpring, useTransition } from "react-spring";
+import dayForestImg from '../../Resources/daytime-forest.jpg';
+import nightForestImg from '../../Resources/nighttime-forest.jpg';
+import { useState } from "react";
 
 type props = {
   children?: JSX.Element[] | JSX.Element,
@@ -14,7 +17,8 @@ function PageBox ( {className = "background-box", ...props}:props ) {
     const theme = useTheme();
     
     const backgroundAnimation = useSpring({
-      background: `${theme.palette.mode === 'dark' ? '#111' : '#fff'}`
+      // background: `${theme.palette.mode === 'dark' ? '#111' : '#fff'}`
+      // backgroundImage: `url(${theme.palette.mode === 'dark' ? nightForestImg : dayForestImg})`
     });
 
     const AnimatedBox = animated(Box);
@@ -22,10 +26,11 @@ function PageBox ( {className = "background-box", ...props}:props ) {
     return (
         <AnimatedBox className={className}
           style={{
-            ...backgroundAnimation
+            ...backgroundAnimation,
+            backgroundImage: `url(${theme.palette.mode === 'dark' ? nightForestImg : dayForestImg})`
           }}
           sx={{
-              background: theme.palette.background.default,
+              // background: theme.palette.background.default,
               color: theme.palette.text.primary,
               ...props.sx
           }}
@@ -54,7 +59,7 @@ function DisplayPanel ( {className = "paper", elevation = 8, ...props}: props ) 
     const styles = useSpring({
       scale: isInView ? 1 : 0,
       opacity: isInView ? 1 : 0,
-      y: isInView ? 0 : 80,
+      // y: isInView ? 0 : 80,
       config: {
         tension: 500,
         friction: 50,
@@ -63,7 +68,8 @@ function DisplayPanel ( {className = "paper", elevation = 8, ...props}: props ) 
 
 
     const backgroundAnimation = useSpring({
-      background: theme.palette.mode === 'dark' ? "#212121" : "#eaf1f2",
+      background: theme.palette.mode === 'dark' ? "#212121aa" : "#ebfcf499",
+      
       config: {
         friction: 40
       }
@@ -80,6 +86,7 @@ function DisplayPanel ( {className = "paper", elevation = 8, ...props}: props ) 
           elevation={elevation}
           style={{
             padding:2,
+            backdropFilter: `blur(10px)`,
             ...backgroundAnimation,
             ...styles,
             ...props.sx
@@ -95,7 +102,7 @@ function OutlinedPaper ( {className = "paper-outlined", ...props}: props ) {
     const theme = useTheme();
     return (
         <Paper className={className} variant='outlined' sx={{
-            background: theme.palette.mode === 'dark' ? "#111111" : "#e9e9e9",
+            background: theme.palette.mode === 'dark' ? "#0006" : "#fff8",
             padding:2,
             ...props.sx
           }}
@@ -107,7 +114,7 @@ function OutlinedPaper ( {className = "paper-outlined", ...props}: props ) {
 };
 
 
-export const buildInteractionObserverThreshold = (count = 100) => {
+const buildInteractionObserverThreshold = (count = 100) => {
   const threshold = []
 
   const parts = 1 / count
@@ -124,5 +131,6 @@ export {
     PageBox,
     DisplayPanel,
     PageStack,
-    OutlinedPaper
+    OutlinedPaper,
+    buildInteractionObserverThreshold
 };

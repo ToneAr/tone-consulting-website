@@ -20,6 +20,7 @@ export default function App () {
                 mode,
                 primary: {
                     main: '#126b68',
+                    light: '#bae3d8',
                 },
                 secondary: {
                     main: '#2db5a3',

@@ -74,7 +74,7 @@ function Navbar({ colorMode } : {colorMode: any}) {
 
   // className={`navbar ${ show && 'hidden' }`}
   return (
-    <AnimatedAppBar style={styles}>
+    <AnimatedAppBar style={{...styles}}>
       <AnimatedContainer maxWidth="xl" >
         <Toolbar disableGutters  >
           <Link to="/" style={{textDecoration: 'none'}}>

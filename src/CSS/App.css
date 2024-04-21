@@ -52,10 +52,15 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  
   width: 120;
   height: 120;
+
   z-index: -1;
-  
+
+  background-repeat: no-repeat;
+  background-size: cover;
+
   scroll-snap-align: center;
   scroll-snap-type: mandatory;
   overscroll-behavior: contain;
@@ -70,7 +75,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  min-width: 80vw;
+  min-width: 85vw;
   max-width: 88vw;
   min-height: 20vh;
   z-index: 1;

@@ -13,7 +13,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = (props: any) => {
   const [isHovered, setIsHovered] = React.useState<boolean>(false);
   // const [angle, setAngle] = React.useState<number>(30);
 
-  const bgColor = theme.palette.mode === 'dark' ? '#1117' : '#e1e1e177';
+  const bgColor = theme.palette.mode === 'dark' ? '#01010177' : '#fff4';
   
   const borderColor =
     theme.palette.mode === 'dark'
@@ -23,20 +23,22 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = (props: any) => {
   const backgroundAnimation = useSpring({
     background:
       `linear-gradient(
-        30deg,
-        ${theme.palette.primary.main} ${isHovered ? 0 : -100}%,
-        ${bgColor} ${isHovered ? 200 : 0}%
+        45deg,
+        ${bgColor} ${isHovered ? 0 : 0}%,
+        ${ theme.palette.mode ==='dark' ? theme.palette.primary.main : theme.palette.primary.light} ${isHovered ? 50 : 0}%,
+        ${bgColor} ${isHovered ? 100 : 0}%
       )`,
     // background: theme.palette.mode === 'dark' ? '#1117' : '#e1e1e177',
     borderColor: borderColor,
     config: {
-      friction: 30
+      friction: 30,
     }
   });
 
   const fontColor = theme.palette.mode === 'dark' ? '#eee' : '#777';
+  const fontHoverColor = theme.palette.mode === 'dark' ? '#fff' : '#111';
   const fontAnimation = useSpring({
-    color: isHovered ? '#eee' : fontColor
+    color: isHovered ? fontHoverColor : fontColor
   });
 
   const handleMouseEnter = () => {

@@ -67,17 +67,28 @@ function Home() {
             </AnimatedTypography>
 
             <br />
+            <Box
+              sx={{
 
-              <Grid container spacing={1} sx={{ maxWidth:'80%', textAlign: 'center'}} >
-                <Grid item xs={4.3} >
-                  <AnimatedTypography variant='h5' sx={{color:theme.palette.text.secondary, textAlign: 'right'}} style={props}>
+              }}
+            >
+              <Grid container spacing={1} justifyContent='center' sx={{ maxWidth:'80vw', textAlign: 'center'}} >
+                <Grid item xs={4} sx={{padding: 0, width: '20px'}}>
+                  <AnimatedTypography variant='h5'
+                    sx={{
+                      color:theme.palette.text.secondary,
+                      textAlign: 'right'
+                    }}
+                    style={props}
+                  >
                     {displayText}
                   </AnimatedTypography>
                 </Grid>
-                <Grid item xs={7.7} >
+                <Grid item xs={8} sx={{padding: 0, width: '1000px'}}>
                   <Typography variant='h6' sx={{color:theme.palette.text.secondary, textAlign: 'left' }}>a turbulent today, in the pursuit of a peaceful tomorrow</Typography>
                 </Grid>
               </Grid>
+            </Box>
 
             <br />
             

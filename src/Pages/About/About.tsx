@@ -229,17 +229,17 @@ export default function About() {
   }, []);
 
   return (
-    <PageBox className='background-box'>
+    <PageBox>
       <PageStack spacing='5vh'>
 
-          <Box sx={{height: '10vh'}}/>
+          <Box sx={{height: '5vh'}}/>
         
           <TitleCard />
 
           <Box sx={{textAlign:'center'}}>
             <DisplayPanel>
 
-            <Typography variant='h2' sx={{color: theme.palette.text.secondary}}>
+            <Typography variant='h2'>
               Competencies
             </Typography>
             
@@ -262,9 +262,9 @@ export default function About() {
           </Box>
           
           <AnimatedBox sx={{textAlign: 'center'}}>
-            <Typography>
-              <KeyboardArrowDownIcon sx={{height:100}}/>
-            </Typography>
+              <Typography>
+                <KeyboardArrowDownIcon sx={{height:100}}/>
+              </Typography>
           </AnimatedBox>
 
           <ContactCard />
