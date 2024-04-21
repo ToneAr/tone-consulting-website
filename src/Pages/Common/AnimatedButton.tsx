@@ -13,20 +13,30 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = (props: any) => {
   const [isHovered, setIsHovered] = React.useState<boolean>(false);
   // const [angle, setAngle] = React.useState<number>(30);
 
-  const bgColor = theme.palette.mode === 'dark' ? '#1110' : '#e1e1e100';
+  const bgColor = theme.palette.mode === 'dark' ? '#1117' : '#e1e1e177';
+  
   const borderColor =
-    isHovered
-      ? theme.palette.mode === 'dark' ? '#777' : '#fff'
-      : theme.palette.mode === 'dark' ? '#333' : '#999'
-
+    theme.palette.mode === 'dark'
+      ? isHovered ? '#777' : '#333' //Dark
+      : isHovered ? '#555' : '#aaa' //Light
+  
   const backgroundAnimation = useSpring({
-    backgroundImage:
+    background:
       `linear-gradient(
         30deg,
         ${theme.palette.primary.main} ${isHovered ? 0 : -100}%,
         ${bgColor} ${isHovered ? 200 : 0}%
       )`,
-    borderColor: isHovered ? '#777' : '#333',
+    // background: theme.palette.mode === 'dark' ? '#1117' : '#e1e1e177',
+    borderColor: borderColor,
+    config: {
+      friction: 30
+    }
+  });
+
+  const fontColor = theme.palette.mode === 'dark' ? '#eee' : '#777';
+  const fontAnimation = useSpring({
+    color: isHovered ? '#eee' : fontColor
   });
 
   const handleMouseEnter = () => {
@@ -37,13 +47,13 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = (props: any) => {
   };
 
   const AnimatedBox = animated(Box);
+  const AnimatedTypography = animated(Typography);
 
   return (
     <AnimatedBox
       style={{
         borderStyle: 'solid',
         borderWidth: '1px',
-        background: theme.palette.mode === 'dark' ? '#1117' : '#e1e1e177',
         height: 50,
         borderRadius: 4,
         backgroundSize: '100% 100%',
@@ -63,13 +73,13 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = (props: any) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <Typography
+        <AnimatedTypography
           style={{
-            color: 'red',
+            ...fontAnimation
           }}
         >
           {props.children}
-        </Typography>
+        </AnimatedTypography>
       </ButtonBase>
     </AnimatedBox>
   );

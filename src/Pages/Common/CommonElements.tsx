@@ -1,5 +1,5 @@
 import { Box, Grow, Paper, Stack, useTheme } from "@mui/material";
-import { animated, useSpring } from "react-spring";
+import { animated, useInView, useSpring } from "react-spring";
 
 type props = {
   children?: JSX.Element[] | JSX.Element,
@@ -44,11 +44,26 @@ function PageStack ( props:props ) {
   );
 }
 
-function DisplayPanel ( {className = "paper", elevation = 10, ...props}: props ) {
+function DisplayPanel ( {className = "paper", elevation = 8, ...props}: props ) {
     const theme = useTheme();
     
+    const [ref, isInView] = useInView({
+      rootMargin: '-10% 0px -10% 0px',
+      amount: buildInteractionObserverThreshold(),
+    })
+    const styles = useSpring({
+      scale: isInView ? 1 : 0,
+      opacity: isInView ? 1 : 0,
+      y: isInView ? 0 : 80,
+      config: {
+        tension: 500,
+        friction: 50,
+      },
+    })
+
+
     const backgroundAnimation = useSpring({
-      background: theme.palette.mode === 'dark' ? "#212121" : "#e1e8e9",
+      background: theme.palette.mode === 'dark' ? "#212121" : "#eaf1f2",
       config: {
         friction: 40
       }
@@ -58,19 +73,21 @@ function DisplayPanel ( {className = "paper", elevation = 10, ...props}: props )
 
 
     return (
-        <Grow in={ props.in ?? true } appear={ true }  >
-          <AnimatedPaper
+      // <Grow in={ props.in ?? isInView } appear={ true }  >
+        <AnimatedPaper
+          ref={ref}
           className={className}
           elevation={elevation}
           style={{
             padding:2,
             ...backgroundAnimation,
+            ...styles,
             ...props.sx
           }}
         >
-            {props.children}
-          </AnimatedPaper>
-        </Grow>
+          {props.children}
+        </AnimatedPaper>
+      // </Grow>
     );
 };
 
@@ -88,6 +105,20 @@ function OutlinedPaper ( {className = "paper-outlined", ...props}: props ) {
     );
 
 };
+
+
+export const buildInteractionObserverThreshold = (count = 100) => {
+  const threshold = []
+
+  const parts = 1 / count
+
+  for (let i = 0; i <= count; i++) {
+    threshold.push(parseFloat((parts * i).toFixed(2)))
+  }
+
+  return threshold
+};
+
 
 export {
     PageBox,

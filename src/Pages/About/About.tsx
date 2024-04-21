@@ -1,8 +1,8 @@
-import { Box, Grid, Paper, Stack, Typography, duration, useTheme } from "@mui/material";
-import { useSpring, animated, useScroll } from '@react-spring/web';
+import { Box, ButtonBase, Grid, Paper, Stack, Typography, duration, styled, useTheme } from "@mui/material";
+import { useSpring, animated, useScroll, useSpringValue, SpringValue } from '@react-spring/web';
 
 import {PageBox, DisplayPanel, PageStack, OutlinedPaper} from '../Common/CommonElements';
-import { Component, useEffect, useState } from "react";
+import { Component, useEffect, useRef, useState } from "react";
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
@@ -11,14 +11,15 @@ import phoneIcon from'../../Resources/telephone.png';
 import mailIcon from'../../Resources/mail.png';
 import linkedInIcon from'../../Resources/linkedin.png';
 import githubIcon from '../../Resources/github.png';
+import { useGesture } from '@use-gesture/react';
 
 import phoneIconDark from'../../Resources/dark-telephone.png';
 import linkedInIconDark from'../../Resources/dark-social.png';
 import mailIconDark from'../../Resources/dark-mail.png';
-import { Opacity } from "@mui/icons-material";
+import { Handshake, Opacity } from "@mui/icons-material";
+import AnimatedButton from "../Common/AnimatedButton";
 // import linkedInIconDark from'../../Resources/dark-linkedin.png';
 // import githubIconDark from '../../Resources/dark-github.png';
-
 
 function TitleCard ( props: any ) {
   
@@ -94,21 +95,17 @@ function TitleCard ( props: any ) {
 
         <br />
 
-        <OutlinedPaper>
+        {/* <OutlinedPaper> */}
           <Typography variant='body1' sx={{justifyContent:'center', textAlign:'center', width: '70vw'}}>
             Harnessing a rich blend of theoretical physics and multifaceted professional expertise,
             I am a dynamic consultant and developer committed to crafting innovative software solutions,
             underscored by a relentless pursuit of excellence and growth across a diverse range of sectors.
           </Typography>
-        </OutlinedPaper>
+        {/* </OutlinedPaper> */}
 
         <br />
 
       </DisplayPanel>
-      <br />
-      <AnimatedBox style={scrollSpring}>
-        <Typography><KeyboardArrowDownIcon sx={{height:100}}/></Typography>
-      </AnimatedBox> 
     </Box>
   </>
 };
@@ -222,21 +219,54 @@ function ContactCard ( props: any ) {
 }; 
 
 export default function About() {
-  
-  window.scroll(0, 100);
-  document.title = "TONE : About me";
 
   const theme = useTheme();
-  const AnimatedTypography = animated(Typography);
   const AnimatedBox = animated(Box);
+
+  useEffect(() => {
+    document.title = "TONE : About me";
+    window.scrollBy(0, 70);
+  }, []);
 
   return (
     <PageBox className='background-box'>
-      <PageStack spacing='30vh'>
+      <PageStack spacing='5vh'>
 
-        <Paper/>
+          <Box sx={{height: '10vh'}}/>
         
           <TitleCard />
+
+          <Box sx={{textAlign:'center'}}>
+            <DisplayPanel>
+
+            <Typography variant='h2' sx={{color: theme.palette.text.secondary}}>
+              Competencies
+            </Typography>
+            
+            <br/>
+            
+            <Grid container direction='row' justifyContent='space-evenly'>
+              {tmpButtonObj.map(
+                text => {return (
+                  <AnimatedButton>
+                    {text}
+                  </AnimatedButton>
+                );
+              }
+              )}
+            </Grid>
+
+            <br/>
+
+            </DisplayPanel>
+          </Box>
+          
+          <AnimatedBox sx={{textAlign: 'center'}}>
+            <Typography>
+              <KeyboardArrowDownIcon sx={{height:100}}/>
+            </Typography>
+          </AnimatedBox>
+
           <ContactCard />
         
         <Paper/>
@@ -245,3 +275,5 @@ export default function About() {
     </PageBox>
   );
 }
+
+const tmpButtonObj = ['Full-Stack Development', 'Teaching & Presentations', 'Modeling & Optimization'];
