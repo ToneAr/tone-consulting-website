@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import { Box, Grid, Paper, Stack, Typography, useTheme } from '@mui/material';
 import { useSpring, animated, useSprings } from "react-spring";
@@ -11,9 +11,6 @@ import {
 } from '../Common/CommonElements';
 
 function Home() {
-
-  window.scroll(0, 100);
-  document.title = "TONE";
 
   const theme = useTheme();
   
@@ -52,6 +49,10 @@ function Home() {
 
   const AnimatedTypography = animated(Typography);
 
+  useEffect(() => {
+    document.title = "TONE";
+    window.scrollBy(0, 100);
+  }, []);
 
   return (
     <PageBox>

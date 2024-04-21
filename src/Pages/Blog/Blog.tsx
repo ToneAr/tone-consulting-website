@@ -1,12 +1,17 @@
-import { Box, Paper, Stack, Typography, useTheme } from '@mui/material';
-import {PageBox, DisplayPanel, PageStack} from '../Common/CommonElements';
-
+import { Box, ButtonBase, Paper, Stack, Typography, useTheme } from '@mui/material';
+import {PageBox, DisplayPanel, PageStack, OutlinedPaper} from '../Common/CommonElements';
+import { useEffect } from 'react';
+import React from 'react';
+import { useSpring, animated } from 'react-spring';
+import AnimatedButton from '../Common/AnimatedButton';
 
 export default function Blog() {
-
-  document.title = "TONE : Other";
-
   const theme = useTheme();
+
+  useEffect(() => {
+    document.title = "TONE : Other";
+    window.scrollBy(0, 100);
+  }, []);
 
   return (
     <PageBox>
