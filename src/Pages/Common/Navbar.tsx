@@ -40,7 +40,8 @@ function Navbar({ colorMode } : {colorMode: any}) {
   const [lastScrollY, setLastScrollY] = useState<number>(0);
 
   const [ styles, springApi ]  = useSpring(()=>({
-      y:0,
+      from:{ y:0 },
+      config:{  friction: 25 }
     })
   );
 
@@ -50,8 +51,8 @@ function Navbar({ colorMode } : {colorMode: any}) {
       springApi.start({
         y: -70
       })
-    } else { 
-      // setShow(true);  
+    } else {
+      // setShow(true);
       springApi.start({
         y: 0
       })
@@ -91,10 +92,10 @@ function Navbar({ colorMode } : {colorMode: any}) {
               }}
             >
               TONE
-            </Typography>       
+            </Typography>
           </Link>
 
-          <Box sx={{ flexGrow: 1, display: {  md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { md: 'flex' } }}>
             
             {pageObjectArray.map((obj) => (
 
