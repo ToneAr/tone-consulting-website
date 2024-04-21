@@ -1,7 +1,8 @@
 import { Box, Grow, Paper, Stack, useTheme } from "@mui/material";
+import { animated, useSpring } from "react-spring";
 
 type props = {
-  children: JSX.Element[] | JSX.Element,
+  children?: JSX.Element[] | JSX.Element,
   className?: any,
   sx?: Object,
   in? : boolean,
@@ -11,37 +12,64 @@ type props = {
 
 function PageBox ( {className = "background-box", ...props}:props ) {
     const theme = useTheme();
+    
+    const backgroundAnimation = useSpring({
+      background: `${theme.palette.mode === 'dark' ? '#111' : '#fff'}`
+    });
+
+    const AnimatedBox = animated(Box);
+    
     return (
-        <Box className={className} sx={{
-            background: theme.palette.background.default,
-            color: theme.palette.text.primary,
-            ...props.sx
-        }}>
+        <AnimatedBox className={className}
+          style={{
+            ...backgroundAnimation
+          }}
+          sx={{
+              background: theme.palette.background.default,
+              color: theme.palette.text.primary,
+              ...props.sx
+          }}
+        >
             {props.children}
-        </Box>
+        </AnimatedBox>
     );
 };
 
 function PageStack ( props:props ) {
-        return (
-        <Stack direction="column" spacing={props.spacing} sx={props.sx}>
-            {props.children}
-        </Stack> 
-    );
-};
+  
+  return (
+    <Stack direction="column" spacing={props.spacing} sx={props.sx}>
+        {props.children}
+    </Stack> 
+  );
+}
 
 function DisplayPanel ( {className = "paper", elevation = 10, ...props}: props ) {
     const theme = useTheme();
+    
+    const backgroundAnimation = useSpring({
+      background: theme.palette.mode === 'dark' ? "#212121" : "#e1e8e9",
+      config: {
+        friction: 40
+      }
+    });
+    const AnimatedPaper = animated(Paper);
+  
+
+
     return (
         <Grow in={ props.in ?? true } appear={ true }  >
-          <Paper className={className} elevation={elevation} sx={{
-            background: theme.palette.mode === 'dark' ? "#212121" : "#eeeeee",
+          <AnimatedPaper
+          className={className}
+          elevation={elevation}
+          style={{
             padding:2,
+            ...backgroundAnimation,
             ...props.sx
           }}
         >
             {props.children}
-          </Paper>
+          </AnimatedPaper>
         </Grow>
     );
 };
