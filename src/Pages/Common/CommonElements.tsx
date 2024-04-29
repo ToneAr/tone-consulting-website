@@ -58,7 +58,7 @@ function DisplayPanel ( {className = "paper", elevation = 8, ...props}: any ) {
       amount: buildInteractionObserverThreshold(),
     })
     const styles = useSpring({
-      scaleY: isInView ? 1 : 0,
+      scale: isInView ? 1 : 0,
       opacity: isInView ? 1 : 0,
       // y: isInView ? 0 : 80,
       config: {

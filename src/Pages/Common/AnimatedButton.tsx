@@ -99,6 +99,7 @@ const AnimatedButton: any = (props: any) => {
 				borderRadius: 4,
 				backgroundSize: '100% 100%',
 				...getBgAnimation(),
+				...props.sx,
 				...props.style
 			}}
 		>
@@ -106,7 +107,7 @@ const AnimatedButton: any = (props: any) => {
 				sx={{
 					top: 0,
 					left: 0,
-					px: `10pt`,
+					// px: `10pt`,
 					width: '100%',
 					height: '100%',
 					borderRadius: 'inherit',
@@ -120,7 +121,9 @@ const AnimatedButton: any = (props: any) => {
 			>
 				<AnimatedTypography
 					style={{
+						textAlign: props.textAlign,
 						...fontAnimation
+
 					}}
 				>
 					{props.children}

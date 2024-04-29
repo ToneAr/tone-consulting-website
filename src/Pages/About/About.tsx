@@ -117,7 +117,7 @@ function TitleCard ( props: any ) {
 };
 
 function DevPanel ( props: any ) {
-	return <Grid container spacing={5} sx={{width: '90%'}}>
+	return <Grid container spacing={4.3} sx={{width: '90%'}}>
 	<Grid item xs={12}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',mb:-4, textAlign:'justify', p:2}}>
 		<Typography variant='h5'>
@@ -166,7 +166,7 @@ function DevPanel ( props: any ) {
 
 function TeachPanel ( props: any ) {
 	const theme = useTheme();
-	return <Grid container spacing={5} sx={{width: '90%'}}>
+	return <Grid container spacing={4.3} sx={{width: '90%'}}>
 		<Grid item xs={12}>
 		<OutlinedPaper sx={{display:'flex', alignItems: 'center', width: '100%', height: '100%', p:2}}>
 			<Grid container>
@@ -234,7 +234,7 @@ function TeachPanel ( props: any ) {
 };
 
 function ModelPanel ( props: any ) {
-	return <Grid container spacing={5} sx={{width: '90%'}}>
+	return <Grid container spacing={4.3} sx={{width: '90%'}}>
 	<Grid item xs={12}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', mb:-4 , p:2}}>
 		<Typography variant='h5'>
@@ -374,6 +374,7 @@ export default function About() {
 	const AnimatedBox = animated(Box);
 	const [ isCompSelected, setIsCompSelected ] = useState<true | false>(false);
 	const [ compSelected, setCompSelected] = useState<string | null>(null);
+	const [ isThesisSelected, setIsThesisSelected ] = useState<boolean>(false);
 
 	useEffect(() => {
 		document.title = "TONE : About me";
@@ -393,13 +394,17 @@ export default function About() {
 			setIsCompSelected(true)
 		}
 	};
+	function handleThesisBtnClick ( ) {
+		setIsThesisSelected(!isThesisSelected)
+	};
 
 	const compAnimationForTitleCard = useSpring({
 		scaleY: isCompSelected ? `0%` : `100%`,
-		height: isCompSelected ? `0%` : `100%`,
+		display: isCompSelected ? `none` : `flex`,
+		opacity: isCompSelected ? 0 : 1,
 	});
 	const compAnimationForCompCard = useSpring({
-		y: isCompSelected ? `-30vh` : `0vh`
+		// y: isCompSelected ? `-30vh` : `0vh`
 	});
 
 	return (
@@ -407,13 +412,13 @@ export default function About() {
 			<PageStack spacing='5vh'>
 
 					{/* Spacer */}
-					<Box sx={{height: '5vh'}} />
+					<Box sx={{height: '10vh'}} />
 				
 					{/* Title */}
 					<TitleCard style={{...compAnimationForTitleCard}} />
 
 					{/* Core Competencies */}
-					<Box sx={{textAlign:'center'}}>
+					<Box sx={{textAlign:'center', display:'block'}}>
 						<DisplayPanel style={{...compAnimationForCompCard}}>
 
 						<Typography variant='h2'>
@@ -426,6 +431,7 @@ export default function About() {
 							{tmpButtonObj.map(
 								obj => {return (
 									<AnimatedButton
+										sx={{height:'10vh',width:'40vh'}}
 										isSelected={ compSelectedQ( obj.key ) }
 										onClick={ () => handleCompBtnClick( obj.key ) }
 									>
@@ -441,17 +447,87 @@ export default function About() {
 						{
 							!isCompSelected
 							? null
-							: <CompPanel compSelected={compSelected} />
+							: <><CompPanel compSelected={compSelected} /><br/><br/></>
 						}
 						
-						<br/>
 						</DisplayPanel>
 					</Box>
+					
+					{/* Down Arrow */}
+					<AnimatedBox sx={{textAlign: 'center'}}>
+							<Typography>
+								<KeyboardArrowDownIcon sx={{height:100}}/>
+							</Typography>
+					</AnimatedBox>
 
 					{/* Education */}
 					<DisplayPanel style={{...compAnimationForCompCard}}>
-
-
+						<Typography variant="h2">
+							Academic Background
+						</Typography>
+						<Typography variant="subtitle1" color={theme.palette.text.disabled}>
+							Swansea University | October 2017 – June 2021
+						</Typography>
+						<br />
+						<Grid container spacing={0.1} sx={{width:'90%'}}>
+							<Grid item xs={12} >
+								<OutlinedPaper>
+								<Typography variant="subtitle2" color={theme.palette.text.disabled}>
+									Degree name
+								</Typography>
+								<Typography variant="h4" sx={{alignContent:'left'}}>
+									BSc THEORETICAL PHYSICS
+								</Typography>
+								</OutlinedPaper>
+							</Grid>
+							<Grid item xs={3} >
+								<OutlinedPaper>
+								<Typography variant="subtitle2" color={theme.palette.text.disabled}>
+									Award
+								</Typography>
+								<Typography variant="body1">
+									First Class Honors
+								</Typography>
+								</OutlinedPaper>
+							</Grid>
+							<Grid item xs={9}>
+								{/* <ButtonBase sx={{width:'100%', textAlign: 'left'}}> */}
+								<AnimatedButton textAlign='left' sx={{width:'99.8%', height:'97.5%'}}
+									onClick={() => handleThesisBtnClick()}
+									isSelected={isThesisSelected}
+								>
+								<Typography variant="subtitle2" color={theme.palette.text.disabled}>
+									Thesis
+								</Typography>
+								<Typography variant="body1">
+									Demonstrating the derivation, coding and use of a PIMC Simulation
+								</Typography>
+								</AnimatedButton>
+								{/* </ButtonBase> */}
+							</Grid>
+							<Grid item xs={12}>
+								{
+									isThesisSelected ? <OutlinedPaper>
+									<Typography variant="subtitle2" color={theme.palette.text.disabled}>
+										Description
+									</Typography>
+									
+										<Typography variant="body1">
+											My thesis outlines Feynman’s path integral formulation of quantum dynamics and the challenges of
+											solving its infinite dimensional integrals. It then outlines the creation of a python program which uses
+											the Metropolis Hastings Algorithm (aka ‘Monte Carlo’ algorithm) to find a numeric approximation of
+											various observables of a given system like the vacuum energy or probability density of the system.
+											This is done by solving Feynman’s equations using the Euler-Lagrange equation together with the
+											Monte Carlo algorithm to minimize the system’s action. It concludes by comparing the accuracy of
+											this method with methods like quantum perturbation theory.
+										</Typography>
+									
+									</OutlinedPaper> : null
+								}
+							</Grid>
+							
+						</Grid>
+						<br />
 					</DisplayPanel>
 					
 					{/* Down Arrow */}
