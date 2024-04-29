@@ -1,5 +1,5 @@
 import { Box, Grow, Paper, Stack, useTheme } from "@mui/material";
-import { animated, useInView, useSpring, useTransition } from "react-spring";
+import { animated, easings, useInView, useSpring, useTransition } from "react-spring";
 import dayForestImg from '../../Resources/daytime-forest.jpg';
 import nightForestImg from '../../Resources/nighttime-forest.jpg';
 import { useState } from "react";
@@ -58,12 +58,12 @@ function DisplayPanel ( {className = "paper", elevation = 8, ...props}: any ) {
       amount: buildInteractionObserverThreshold(),
     })
     const styles = useSpring({
-      scale: isInView ? 1 : 0,
+      scaleY: isInView ? 1 : 0,
       opacity: isInView ? 1 : 0,
       // y: isInView ? 0 : 80,
       config: {
-        tension: 500,
-        friction: 50,
+        duration: 200,
+        easing: easings.easeInSine
       },
     })
 
