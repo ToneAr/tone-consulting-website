@@ -1,5 +1,5 @@
 import { Box, ButtonBase, Grid, Paper, Stack, Typography, duration, styled, useTheme } from "@mui/material";
-import { useSpring, animated, useScroll, useSpringValue, SpringValue } from '@react-spring/web';
+import { useSpring, animated, useScroll, useSpringValue, SpringValue, useTransition } from '@react-spring/web';
 
 import {PageBox, DisplayPanel, PageStack, OutlinedPaper} from '../Common/CommonElements';
 import { Component, useEffect, useRef, useState } from "react";
@@ -13,11 +13,16 @@ import linkedInIcon from'../../Resources/linkedin.png';
 import githubIcon from '../../Resources/github.png';
 import { useGesture } from '@use-gesture/react';
 
-import phoneIconDark from'../../Resources/dark-telephone.png';
-import linkedInIconDark from'../../Resources/dark-social.png';
-import mailIconDark from'../../Resources/dark-mail.png';
+import phoneIconDark from '../../Resources/dark-telephone.png';
+import linkedInIconDark from '../../Resources/dark-social.png';
+import mailIconDark from '../../Resources/dark-mail.png';
 import { Handshake, Opacity } from "@mui/icons-material";
 import AnimatedButton from "../Common/AnimatedButton";
+
+import {ReactComponent as PhoneSVG } from '../../Resources/call.svg';
+import {ReactComponent as EmailSVG } from '../../Resources/message.svg';
+import {ReactComponent as LinkedInSVG } from '../../Resources/linkedin.svg';
+import {ReactComponent as GitHubSVG } from '../../Resources/github.svg';
 // import linkedInIconDark from'../../Resources/dark-linkedin.png';
 // import githubIconDark from '../../Resources/dark-github.png';
 
@@ -77,9 +82,10 @@ function TitleCard ( props: any ) {
     }
   });
 
+
   return <>
     <Box className={props.className} sx={{textAlign:'center', ...props.sx}}>
-      <DisplayPanel>
+      <DisplayPanel style={{ ...props.style }}>
 
         <Typography variant='h1'>
           Antonis Aristeidou
@@ -110,16 +116,170 @@ function TitleCard ( props: any ) {
   </>
 };
 
+function DevPanel ( props: any ) {
+  return <Grid container spacing={5} sx={{width: '90%'}}>
+  <Grid item xs={12}>
+  <OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', p:2}}>
+    <Typography variant='h5'>
+      Experience in both front- and back-end development for an extremely varied scope of projects, including
+      building UIs and web-apps using React; Building and deploying online REST APIs using WL or JS; Or
+      building desktop applications using WL, always strictly adhering to the agile SDLC methodology and
+      DevOps lifecycle.
+    </Typography>
+  </OutlinedPaper>
+  </Grid>
+  <Grid item xs={6}>
+  <OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', p:2}}>
+    <Typography variant='h5'>
+      Having experience in both object oriented- and function programming owing to the symbolic functional
+      programming within WL and the object-oriented programming of JS and C++
+    </Typography>
+  </OutlinedPaper>
+  </Grid>
+  <Grid item xs={6}>
+  <OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', p:2}}>
+    <Typography variant='h5'>
+      Almost all project also involved the building and maintaining of multiple auxiliary systems like SQL
+      databases; Python and shell scripts; Docker containerisation scripts and others.
+    </Typography>
+  </OutlinedPaper>
+  </Grid>
+  <Grid item xs={6}>
+  <OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', p:2}}>
+    <Typography variant='h5'>
+      Projects were also supported by testing suites which included unit and integration tests (WL and JS),
+      “robot” testing of front-end interfaces, and custom git scripts to validate any pushes or merges using the
+      appropriate tests.
+    </Typography>
+  </OutlinedPaper>
+  </Grid>
+  <Grid item xs={6}>
+  <OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', p:2}}>
+    <Typography variant='h5'>
+      Coding is my passion and so I undertake various personal project on my personal time including a POS
+      system based on React, an algorithm trading bot in python and numerous coding challenges using C++.
+    </Typography>
+  </OutlinedPaper>
+  </Grid>
+  </Grid>
+};
+
+function TeachPanel ( props: any ) {
+  const theme = useTheme();
+  return <Grid container spacing={5} sx={{width: '90%'}}>
+    <Grid item xs={12}>
+    <OutlinedPaper sx={{display:'flex', alignItems: 'center', width: '100%', height: '100%', p:2}}>
+      <Grid container>
+        <Grid item xs={3} sx={{display:'flex', alignItems: 'center'}}>
+        <Typography variant="h4" color={theme.palette.text.disabled}>
+          Unique talks authored:
+        </Typography>
+        </Grid>
+
+        <Grid item xs={3}>
+        <Typography variant="body1" color={theme.palette.text.disabled}>
+          SHOWCASE
+        </Typography>
+        <Typography variant="body1" >
+          Coding a Path Integral Monte
+          Carlo Simulator in WL
+        </Typography>
+        </Grid>
+  
+        <Grid item xs={3}>
+        <Typography variant="body1" color={theme.palette.text.disabled}>
+          CASE STUDY
+        </Typography>
+        <Typography variant="body1">
+          Exploring Mars using the
+          NASA MarsRoverAPI
+        </Typography>
+        </Grid>
+
+        <Grid item xs={3}>
+        <Typography variant="body1" color={theme.palette.text.disabled}>
+          TUTORIAL
+        </Typography>
+        <Typography variant="body1">
+          Using Stylesheets to
+          customize Mathematica
+        </Typography>
+
+        </Grid>
+      </Grid>
+    </OutlinedPaper>
+  </Grid>
+  <Grid item xs={6}>
+  <OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', p:2}}>
+    <Typography variant='h5'>
+      Experience in writing technical content showcasing how the WL for various applications like physics,
+      chemistry, and so on. The presentations followed 3 main types: Lessons, Showcases, Case studies. I wrote
+      3 unique talks, 1 of each type, and contributed to countless others, by either updating the content, updating
+      or bug fixing demos, or modernizing old presentations.
+    </Typography>
+  </OutlinedPaper>
+  </Grid>
+  <Grid item xs={6}>
+  <OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', p:2}}>
+    <Typography variant='h5'>
+      I also taught, WL101 and “Hands-on start to
+      Mathematica” to hundreds of university students and private company engineers, both online and in person
+      with workshop type tutorials or formal lectures on the WL with class sizes ranging anywhere from 1 to
+      over 50. Some of the universities I visited include UCL, KCL, UCDublin, UOAberdeen among others.
+    </Typography>
+  </OutlinedPaper>
+  </Grid>
+
+  </Grid>
+};
+
+function ModelPanel ( props: any ) {
+  return <Grid container spacing={5} sx={{width: '90%'}}>
+  <Grid item xs={3}>
+  <OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', p:2}}>
+    <Typography variant='h5'>
+      Having a theoretical physics background, I excelled in any projects that included mathematical/simulation
+      modeling and optimization, having simulated many physical systems inside python. 
+    </Typography>
+  </OutlinedPaper>
+  </Grid>
+  <Grid item xs={9}>
+  <OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', p:2}}>
+    <Typography variant='h5'>
+      My first customer project at WREL was an industrial machine setting optimization algorithm intended to
+      find settings for a combination of machines as to minimize the required power. I provided the customer
+      with multiple options of solution including a Lagrange multiplier local optimization and also a custom
+      algorithm I developed for generating a machine settings combination tensor, extracting the surface of
+      settings matching required output and then finding the minimum of that surface and also a method utilizing
+      WL’s build in NMinimize function. A separate algorithm then had to be developed for the best choice of
+      machines at a given output which again uses a bespoke algorithm I designed. Both of these were then
+      delivered as online APIs.
+    </Typography>
+  </OutlinedPaper>
+  </Grid>
+  </Grid>
+};
+
+function CompPanel<JSXElement> ({ compSelected = null }:{ compSelected:string|null }) {
+    return<>
+      {{
+        'dev': <DevPanel />,
+        'teach': <TeachPanel />,
+        'model': <ModelPanel/>,
+        'none': null
+      }[compSelected ?? 'none']}
+   </>
+};
+
 function ContactCard ( props: any ) {
   const theme = useTheme();
-  
+  const svgColor = theme.palette.mode === 'dark' ? "#777" : "111";
+  let svgWidth = 35;
+
   interface IContactObj {
     text: string,
     href: string,
-    icon: {
-      default: string,
-      dark: string
-    }
+    icon: React.ReactNode
   };
   interface IContactColumn {
     title: string,
@@ -129,48 +289,38 @@ function ContactCard ( props: any ) {
     details : IContactColumn,
     links : IContactColumn,
   };
-
+  
   const contactsObjectArray: IContactsGrid = {
     details : {
       title: "Contact Details",
       data: [{text: 'tonyaris@outlook',
         href: 'mailto:tonyaris@outlook.com',
-        icon: {
-          default: mailIcon,
-          dark: mailIconDark
-        }
+        icon: <EmailSVG fill={svgColor} width={svgWidth}/>
       },
       {text: '+(44) 747 868 2747',
         href: 'tel:+447478682747',
-        icon: {
-          default: phoneIcon,
-          dark: phoneIconDark
-        }
+        icon: <PhoneSVG  fill={svgColor} width={svgWidth}/>
       }],
     },
     links : {
       title:"Links",
-      data:[{text: 'Antonis Aristeidou',
+      data:[{
+        text: 'Antonis Aristeidou',
         href: 'https://www.linkedin.com/in/antonis-aristeidou',
-        icon: {
-          default: linkedInIcon,
-          dark: linkedInIconDark
-        }
+        icon: <LinkedInSVG fill={svgColor} width={svgWidth}/>
       },
       {text: 'ToneAr',
         href: 'https://www.github.com/ToneAr',
-        icon: {
-          default: githubIcon,
-          dark: githubIcon
-        }
+        icon: <GitHubSVG fill={svgColor} width={svgWidth}/>
       }],
     }
   };
   
-  return <DisplayPanel>
+  return <DisplayPanel style={{...props.style}}>
     <Typography variant='h2'>
       Details
     </Typography>
+    
     <br/>
     <Grid container spacing={10} direction='row' justifyContent='space-around' sx={{maxWidth: '75vw', textAlign: 'center'}}>
         {
@@ -184,19 +334,19 @@ function ContactCard ( props: any ) {
                     </Typography>
 
                     <br/>
-
-                    <Grid container spacing={2} sx={{justifyContent:'center', textAlign: 'center',}}>
+                    <Grid container spacing={2} sx={{justifyContent:'center', textAlign: 'left'}}>
                       {
                         values.data.map( (obj: IContactObj) => {
                             return<>
-                              <Grid item xs={3.5} sx={{ textAlign: 'right'}} >
-                                <Typography variant='body1'>
+                              <Grid item xs={3} sx={{ textAlign: 'right',p:0}} >
+                                {obj.icon}
+                                {/* <Typography variant='body1'>
                                   <img src={theme.palette.mode==='dark' ? obj.icon.dark : obj.icon.default} width={30}/>
-                                </Typography>
+                                </Typography> */}
                               </Grid>
-                              <Grid item xs={8.5} sx={{textAlign: 'left'}}>
+                              <Grid item xs={9} sx={{textAlign: 'left',p:0}}>
                                 <Typography variant='body1'>
-                                  <a  className='link' href='mailto:tonyaris@outlook.com' >
+                                  <a  className='link' href={obj.href} >
                                     {`${obj.text}`}
                                   </a>
                                 </Typography>
@@ -222,11 +372,34 @@ export default function About() {
 
   const theme = useTheme();
   const AnimatedBox = animated(Box);
+  const [ isCompSelected, setIsCompSelected ] = useState<true | false>(false);
+  const [ compSelected, setCompSelected] = useState<string | null>(null);
 
   useEffect(() => {
     document.title = "TONE : About me";
     window.scrollBy(0, 70);
   }, []);
+
+  function compSelectedQ (val :string ) {
+    return compSelected === val
+  };
+
+  function handleCompBtnClick ( val : string ) {
+    if ( compSelected === val ) {
+      setCompSelected(null)
+      setIsCompSelected(false)
+    } else {
+      setCompSelected(val)
+      setIsCompSelected(true)
+    }
+  };
+
+  const compAnimationForTitleCard = useSpring({
+    scaleY: isCompSelected ? `0%` : `100%`
+  });
+  const compAnimationForCompCard = useSpring({
+    y: isCompSelected ? `-41vh` : `0vh`
+  });
 
   return (
     <PageBox>
@@ -234,10 +407,10 @@ export default function About() {
 
           <Box sx={{height: '5vh'}}/>
         
-          <TitleCard />
+          <TitleCard style={compAnimationForTitleCard} />
 
           <Box sx={{textAlign:'center'}}>
-            <DisplayPanel>
+            <DisplayPanel style={{...compAnimationForCompCard}}>
 
             <Typography variant='h2'>
               Competencies
@@ -247,9 +420,12 @@ export default function About() {
             
             <Grid container direction='row' justifyContent='space-evenly'>
               {tmpButtonObj.map(
-                text => {return (
-                  <AnimatedButton>
-                    {text}
+                obj => {return (
+                  <AnimatedButton
+                    isSelected={ compSelectedQ( obj.key ) }
+                    onClick={ () => handleCompBtnClick( obj.key ) }
+                  >
+                    {obj.text}
                   </AnimatedButton>
                 );
               }
@@ -258,6 +434,13 @@ export default function About() {
 
             <br/>
 
+            {
+              !isCompSelected
+              ? null
+              : <CompPanel compSelected={compSelected} />
+            }
+            
+            <br/>
             </DisplayPanel>
           </Box>
           
@@ -267,7 +450,7 @@ export default function About() {
               </Typography>
           </AnimatedBox>
 
-          <ContactCard />
+          <ContactCard style={{...compAnimationForCompCard}}/>
         
         <Paper/>
 
@@ -276,4 +459,14 @@ export default function About() {
   );
 }
 
-const tmpButtonObj = ['Full-Stack Development', 'Teaching & Presentations', 'Modeling & Optimization'];
+const tmpButtonObj = [
+  {text:'Full-Stack Development',
+    key: 'dev'
+  },
+  {text:'Teaching & Presentations',
+    key: 'teach'
+  },
+  {text:'Modeling & Optimization',
+    key: 'model'
+  }
+];

@@ -10,7 +10,8 @@ type props = {
   sx?: Object,
   in? : boolean,
   spacing?: number | string,
-  elevation?: number
+  elevation?: number,
+  style?: any
 };
 
 function PageBox ( {className = "background-box", ...props}:props ) {
@@ -49,7 +50,7 @@ function PageStack ( props:props ) {
   );
 }
 
-function DisplayPanel ( {className = "paper", elevation = 8, ...props}: props ) {
+function DisplayPanel ( {className = "paper", elevation = 8, ...props}: any ) {
     const theme = useTheme();
     
     const [ref, isInView] = useInView({
@@ -79,22 +80,20 @@ function DisplayPanel ( {className = "paper", elevation = 8, ...props}: props ) 
 
 
     return (
-      // <Grow in={ props.in ?? isInView } appear={ true }  >
         <AnimatedPaper
           ref={ref}
           className={className}
           elevation={elevation}
           style={{
-            padding:2,
+            padding:10,
             backdropFilter: `blur(10px)`,
             ...backgroundAnimation,
             ...styles,
-            ...props.sx
+            ...props.style
           }}
         >
           {props.children}
         </AnimatedPaper>
-      // </Grow>
     );
 };
 
@@ -102,7 +101,7 @@ function OutlinedPaper ( {className = "paper-outlined", ...props}: props ) {
     const theme = useTheme();
     return (
         <Paper className={className} variant='outlined' sx={{
-            background: theme.palette.mode === 'dark' ? "#0006" : "#fff8",
+            background: theme.palette.mode === 'dark' ? "#000b" : "#fffb",
             padding:2,
             ...props.sx
           }}

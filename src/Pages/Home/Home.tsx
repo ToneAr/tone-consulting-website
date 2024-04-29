@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import { Box, Grid, Paper, Stack, Typography, useTheme } from '@mui/material';
 import { useSpring, animated, useSprings } from "react-spring";
+import { easings } from '@react-spring/web';
 
 import {
   PageBox,
@@ -30,8 +31,9 @@ function Home() {
       y: -50 },
     to: [{
       opacity: 1,
-      y: 0
+      y: 0,
     },{
+      delay: 4000,
       opacity: 0,
       y: 30
     },],
@@ -42,8 +44,8 @@ function Home() {
     
     config: {
       mass: 5,
-      friction: 200,
-      tension: 500
+      friction: 40,
+      tension: 100
     }
   });
 
