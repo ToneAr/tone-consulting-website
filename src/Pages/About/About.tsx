@@ -26,6 +26,8 @@ import {ReactComponent as GitHubSVG } from '../../Resources/github.svg';
 // import linkedInIconDark from'../../Resources/dark-linkedin.png';
 // import githubIconDark from '../../Resources/dark-github.png';
 
+import stringData from '../../Resources/raw-strings.json';
+
 function TitleCard ( props: any ) {
 	
 	const theme = useTheme();
@@ -81,7 +83,7 @@ function TitleCard ( props: any ) {
 			tension: 500
 		}
 	});
-
+	console.log(stringData);
 
 	return <>
 		<Box className={props.className} sx={{textAlign:'center', ...props.sx}}>
@@ -103,9 +105,7 @@ function TitleCard ( props: any ) {
 
 				{/* <OutlinedPaper> */}
 					<Typography variant='body1' sx={{justifyContent:'center', textAlign:'center', width: '70vw'}}>
-						Harnessing a rich blend of theoretical physics and multifaceted professional expertise,
-						I am a dynamic consultant and developer committed to crafting innovative software solutions,
-						underscored by a relentless pursuit of excellence and growth across a diverse range of sectors.
+						{stringData.about.abstract}
 					</Typography>
 				{/* </OutlinedPaper> */}
 
@@ -121,44 +121,36 @@ function DevPanel ( props: any ) {
 	<Grid item xs={12}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',mb:-4, textAlign:'justify', p:2}}>
 		<Typography variant='h5'>
-			Experience in both front- and back-end development for an extremely varied scope of projects, including
-			building UIs and web-apps using React; Building and deploying online REST APIs using WL or JS; Or
-			building desktop applications using WL, always strictly adhering to the agile SDLC methodology and
-			DevOps lifecycle.
+			{stringData.about.devPanel.experienceScope}
 		</Typography>
 	</OutlinedPaper>
 	</Grid>
 	<Grid item xs={6}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify',mb:-4, p:2}}>
 		<Typography variant='h5'>
-			Having experience in both object oriented- and function programming owing to the symbolic functional
-			programming within WL and the object-oriented programming of JS and C++
+			{stringData.about.devPanel.languageExperience}
 		</Typography>
 	</OutlinedPaper>
 	</Grid>
 	<Grid item xs={6}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify',mb:-4, p:2}}>
 		<Typography variant='h5'>
-			Almost all project also involved the building and maintaining of multiple auxiliary systems like SQL
-			databases; Python and shell scripts; Docker containerisation scripts and others.
+			{stringData.about.devPanel.auxiliaryExperience}
 		</Typography>
 	</OutlinedPaper>
 	</Grid>
 	<Grid item xs={6}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', mb:-4,p:2}}>
 		<Typography variant='h5'>
-			Projects were also supported by testing suites which included unit and integration tests (WL and JS),
-			“robot” testing of front-end interfaces, and custom git scripts to validate any pushes or merges using the
-			appropriate tests.
+			{stringData.about.devPanel.testingExperience}
 		</Typography>
 	</OutlinedPaper>
 	</Grid>
 	<Grid item xs={6}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify',mb:-4, p:2}}>
 		<Typography variant='h5'>
-			Coding is my passion and so I undertake various personal project on my personal time including a POS
-			system based on React, an algorithm trading bot in python and numerous coding challenges using C++.
-		</Typography>
+			{stringData.about.devPanel.personalExperience}
+			</Typography>
 	</OutlinedPaper>
 	</Grid>
 	</Grid>
@@ -181,8 +173,7 @@ function TeachPanel ( props: any ) {
 					SHOWCASE
 				</Typography>
 				<Typography variant="body1" >
-					Coding a Path Integral Monte
-					Carlo Simulator in WL
+					{stringData.about.teachPanel.talks.showcase}
 				</Typography>
 				</Grid>
 	
@@ -191,8 +182,7 @@ function TeachPanel ( props: any ) {
 					CASE STUDY
 				</Typography>
 				<Typography variant="body1">
-					Exploring Mars using the
-					NASA MarsRoverAPI
+					{stringData.about.teachPanel.talks.caseStudy}
 				</Typography>
 				</Grid>
 
@@ -201,8 +191,7 @@ function TeachPanel ( props: any ) {
 					TUTORIAL
 				</Typography>
 				<Typography variant="body1">
-					Using Stylesheets to
-					customize Mathematica
+					{stringData.about.teachPanel.talks.tutorial}
 				</Typography>
 
 				</Grid>
@@ -212,20 +201,14 @@ function TeachPanel ( props: any ) {
 	<Grid item xs={6}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify',mb:-4, p:2}}>
 		<Typography variant='h5'>
-			Experience in writing technical content showcasing how the WL for various applications like physics,
-			chemistry, and so on. The presentations followed 3 main types: Lessons, Showcases, Case studies. I wrote
-			3 unique talks, 1 of each type, and contributed to countless others, by either updating the content, updating
-			or bug fixing demos, or modernizing old presentations.
+			{stringData.about.teachPanel.teachingScope}
 		</Typography>
 	</OutlinedPaper>
 	</Grid>
 	<Grid item xs={6}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', mb:-4, p:2}}>
 		<Typography variant='h5'>
-			I also taught, WL101 and “Hands-on start to
-			Mathematica” to hundreds of university students and private company engineers, both online and in person
-			with workshop type tutorials or formal lectures on the WL with class sizes ranging anywhere from 1 to
-			over 50. Some of the universities I visited include UCL, KCL, UCDublin, UOAberdeen among others.
+			{stringData.about.teachPanel.teachingExperience}
 		</Typography>
 	</OutlinedPaper>
 	</Grid>
@@ -238,22 +221,14 @@ function ModelPanel ( props: any ) {
 	<Grid item xs={12}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', mb:-4 , p:2}}>
 		<Typography variant='h5'>
-			Having a theoretical physics background, I excelled in any projects that included mathematical/simulation
-			modeling and optimization, having simulated many physical systems inside python. 
+			{stringData.about.modelPanel.modelScope}
 		</Typography>
 	</OutlinedPaper>
 	</Grid>
 	<Grid item xs={12}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', mb:-4, p:2}}>
 		<Typography variant='h5'>
-			My first customer project at WREL was an industrial machine setting optimization algorithm intended to
-			find settings for a combination of machines as to minimize the required power. I provided the customer
-			with multiple options of solution including a Lagrange multiplier local optimization and also a custom
-			algorithm I developed for generating a machine settings combination tensor, extracting the surface of
-			settings matching required output and then finding the minimum of that surface and also a method utilizing
-			WL’s build in NMinimize function. A separate algorithm then had to be developed for the best choice of
-			machines at a given output which again uses a bespoke algorithm I designed. Both of these were then
-			delivered as online APIs.
+			{stringData.about.modelPanel.modelExperience}
 		</Typography>
 	</OutlinedPaper>
 	</Grid>
@@ -466,7 +441,7 @@ export default function About() {
 							Academic Background
 						</Typography>
 						<Typography variant="subtitle1" color={theme.palette.text.disabled}>
-							Swansea University | October 2017 – June 2021
+							{stringData.about.academicPanel.bsc.location} | {stringData.about.academicPanel.bsc.degreeDate}
 						</Typography>
 						<br />
 						<Grid container spacing={0.1} sx={{width:'90%'}}>
@@ -476,7 +451,7 @@ export default function About() {
 									Degree name
 								</Typography>
 								<Typography variant="h4" sx={{alignContent:'left'}}>
-									BSc THEORETICAL PHYSICS
+									{stringData.about.academicPanel.bsc.degreeName}
 								</Typography>
 								</OutlinedPaper>
 							</Grid>
@@ -486,7 +461,7 @@ export default function About() {
 									Award
 								</Typography>
 								<Typography variant="body1">
-									First Class Honors
+									{stringData.about.academicPanel.bsc.award}
 								</Typography>
 								</OutlinedPaper>
 							</Grid>
@@ -500,7 +475,7 @@ export default function About() {
 									Thesis
 								</Typography>
 								<Typography variant="body1">
-									Demonstrating the derivation, coding and use of a PIMC Simulation
+									{stringData.about.academicPanel.bsc.thesisName}
 								</Typography>
 								</AnimatedButton>
 								{/* </ButtonBase> */}
@@ -513,13 +488,7 @@ export default function About() {
 									</Typography>
 									
 										<Typography variant="body1">
-											My thesis outlines Feynman’s path integral formulation of quantum dynamics and the challenges of
-											solving its infinite dimensional integrals. It then outlines the creation of a python program which uses
-											the Metropolis Hastings Algorithm (aka ‘Monte Carlo’ algorithm) to find a numeric approximation of
-											various observables of a given system like the vacuum energy or probability density of the system.
-											This is done by solving Feynman’s equations using the Euler-Lagrange equation together with the
-											Monte Carlo algorithm to minimize the system’s action. It concludes by comparing the accuracy of
-											this method with methods like quantum perturbation theory.
+											{stringData.about.academicPanel.bsc.thesisDescription}
 										</Typography>
 									
 									</OutlinedPaper> : null

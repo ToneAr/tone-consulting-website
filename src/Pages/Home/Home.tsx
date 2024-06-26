@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import { Box, Grid, Paper, Stack, Typography, useTheme } from '@mui/material';
 import { useSpring, animated, useSprings } from "react-spring";
 import { easings } from '@react-spring/web';
+import stringData from '../../Resources/raw-strings.json';
 
 import {
   PageBox,
@@ -95,8 +96,7 @@ function Home() {
             <br />
             
             <Typography variant='body1' sx={{justifyContent:'center', textAlign:'center', maxWidth: '70vw'}}>
-              The world is in constant flux. Knowledge allows the traversal of its ever changing landscapes,
-              shining a light at it's darkest corners.
+              {stringData.home.abstract}
             </Typography>
             
             <br />
