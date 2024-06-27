@@ -1,31 +1,30 @@
-import { Box, ButtonBase, Grid, Paper, Stack, Typography, duration, styled, useTheme } from "@mui/material";
-import { useSpring, animated, useScroll, useSpringValue, SpringValue, useTransition } from '@react-spring/web';
-
-import {PageBox, DisplayPanel, PageStack, OutlinedPaper} from '../Common/CommonElements';
-import { Component, useEffect, useRef, useState } from "react";
-
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
-import phoneIcon from'../../Resources/telephone.png';
-// import linkedInIcon from'../../Resources/social.png';
-import mailIcon from'../../Resources/mail.png';
-import linkedInIcon from'../../Resources/linkedin.png';
-import githubIcon from '../../Resources/github.png';
-import { useGesture } from '@use-gesture/react';
-
-import phoneIconDark from '../../Resources/dark-telephone.png';
-import linkedInIconDark from '../../Resources/dark-social.png';
-import mailIconDark from '../../Resources/dark-mail.png';
-import { Handshake, Opacity } from "@mui/icons-material";
+//Imports
+	
+	// Extensions
+import { Box, Grid, Paper, Stack, Typography, useTheme } from "@mui/material";
+import { useSpring, animated, useScroll } from '@react-spring/web';
 import AnimatedButton from "../Common/AnimatedButton";
-
+import { PageBox, DisplayPanel, PageStack, OutlinedPaper } from '../Common/CommonElements';
+import { useEffect, useState } from "react";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+	
+	// Assets
+// import phoneIcon from'../../Resources/telephone.png';
+// import linkedInIcon from'../../Resources/social.png';
+// import mailIcon from'../../Resources/mail.png';
+// import linkedInIcon from'../../Resources/linkedin.png';
+// import githubIcon from '../../Resources/github.png';
+// import phoneIconDark from '../../Resources/dark-telephone.png';
+// import linkedInIconDark from '../../Resources/dark-social.png';
+// import mailIconDark from '../../Resources/dark-mail.png';
 import {ReactComponent as PhoneSVG } from '../../Resources/call.svg';
 import {ReactComponent as EmailSVG } from '../../Resources/message.svg';
 import {ReactComponent as LinkedInSVG } from '../../Resources/linkedin.svg';
 import {ReactComponent as GitHubSVG } from '../../Resources/github.svg';
 // import linkedInIconDark from'../../Resources/dark-linkedin.png';
 // import githubIconDark from '../../Resources/dark-github.png';
-
+	
+	// Data
 import stringData from '../../Resources/raw-strings.json';
 
 function TitleCard ( props: any ) {
@@ -235,15 +234,122 @@ function ModelPanel ( props: any ) {
 	</Grid>
 };
 
-function CompPanel ({ compSelected = null }:{ compSelected:string|null }) {
-		return<>
-			{{
-				'dev': <DevPanel />,
-				'teach': <TeachPanel />,
-				'model': <ModelPanel/>,
-				'none': null
-			}[compSelected ?? 'none']}
-	 </>
+function EduPanel ( props : any ) {
+	return <DisplayPanel style={{...props.compAnimationForCompCard}}>
+		<Typography variant="h2">
+			Academic Background
+		</Typography>
+		<Typography variant="subtitle1" color={props.theme.palette.text.disabled}>
+			{stringData.about.academicPanel.bsc.location} | {stringData.about.academicPanel.bsc.degreeDate}
+		</Typography>
+		<br />
+		<Grid container spacing={0.1} sx={{width:'90%'}}>
+			<Grid item xs={12} >
+				<OutlinedPaper>
+				<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
+					Degree name
+				</Typography>
+				<Typography variant="h4" sx={{alignContent:'left'}}>
+					{stringData.about.academicPanel.bsc.degreeName}
+				</Typography>
+				</OutlinedPaper>
+			</Grid>
+			<Grid item xs={3} >
+				<OutlinedPaper>
+				<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
+					Award
+				</Typography>
+				<Typography variant="body1">
+					{stringData.about.academicPanel.bsc.award}
+				</Typography>
+				</OutlinedPaper>
+			</Grid>
+			<Grid item xs={9}>
+				{/* <ButtonBase sx={{width:'100%', textAlign: 'left'}}> */}
+				<AnimatedButton textAlign='left' sx={{width:'99.8%', height:'97.5%'}}
+					onClick={() => props.handleThesisBtnClick()}
+					isSelected={props.isThesisSelected}
+				>
+				<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
+					Thesis
+				</Typography>
+				<Typography variant="body1">
+					{stringData.about.academicPanel.bsc.thesisName}
+				</Typography>
+				</AnimatedButton>
+				{/* </ButtonBase> */}
+			</Grid>
+			<Grid item xs={12}>
+				{
+					props.isThesisSelected ? <OutlinedPaper>
+					<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
+						Description
+					</Typography>
+					
+						<Typography variant="body1">
+							{stringData.about.academicPanel.bsc.thesisDescription}
+						</Typography>
+					
+					</OutlinedPaper> : null
+				}
+			</Grid>
+			
+		</Grid>
+		<br />
+	</DisplayPanel>
+};
+
+function CompPanel ( props : any ) {
+	function handleCompBtnClick ( val : string ) {
+		if ( props.compSelected === val ) {
+			props.setCompSelected(null)
+			props.setIsCompSelected(false)
+		} else {
+			props.setCompSelected(val)
+			props.setIsCompSelected(true)
+		}
+	};
+	return <Box sx={{textAlign:'center', display:'block'}}>
+		<DisplayPanel style={{...props.compAnimationForCompCard}}>
+
+		<Typography variant='h2'>
+			Core Competencies
+		</Typography>
+		
+		<br/>
+		
+		<Grid container direction='row' justifyContent='space-evenly'>
+			{tmpButtonObj.map(
+				obj => {return (
+					<AnimatedButton
+						sx={{height:'10vh',width:'40vh'}}
+						isSelected={ props.compSelectedQ( obj.key ) }
+						onClick={ () => handleCompBtnClick( obj.key ) }
+					>
+						{obj.text}
+					</AnimatedButton>
+				);
+			}
+			)}
+		</Grid>
+
+		<br/>
+		{console.log(props.compSelected)}
+		{
+			!props.isCompSelected
+			? null
+			: <>{{
+					'dev': <DevPanel />,
+					'teach': <TeachPanel />,
+					'model': <ModelPanel/>,
+					'none': null
+				}[props.compSelected as string ?? 'none']}
+				<br/><br/>
+			</>
+		}
+		
+		</DisplayPanel>
+	</Box>
 };
 
 function ContactCard ( props: any ) {
@@ -343,36 +449,30 @@ function ContactCard ( props: any ) {
 	</DisplayPanel>
 }; 
 
-export default function About() {
-
-	const theme = useTheme();
+function DownArrow ( props : any ) {
 	const AnimatedBox = animated(Box);
+	return <AnimatedBox sx={{textAlign: 'center'}}>
+		<Typography>
+			<KeyboardArrowDownIcon sx={{height:100}}/>
+		</Typography>
+	</AnimatedBox>
+};
+
+export default function About() {
+	useEffect(() => {
+			document.title = "TONE : About me";
+			window.scrollBy(0, 70);
+		},
+		[]
+	);
+
+	// Constants
+	const theme = useTheme();
 	const [ isCompSelected, setIsCompSelected ] = useState<true | false>(false);
 	const [ compSelected, setCompSelected] = useState<string | null>(null);
 	const [ isThesisSelected, setIsThesisSelected ] = useState<boolean>(false);
 
-	useEffect(() => {
-		document.title = "TONE : About me";
-		window.scrollBy(0, 70);
-	}, []);
-
-	function compSelectedQ (val :string ) {
-		return compSelected === val
-	};
-
-	function handleCompBtnClick ( val : string ) {
-		if ( compSelected === val ) {
-			setCompSelected(null)
-			setIsCompSelected(false)
-		} else {
-			setCompSelected(val)
-			setIsCompSelected(true)
-		}
-	};
-	function handleThesisBtnClick ( ) {
-		setIsThesisSelected(!isThesisSelected)
-	};
-
+	// Springs
 	const compAnimationForTitleCard = useSpring({
 		scaleY: isCompSelected ? `0%` : `100%`,
 		display: isCompSelected ? `none` : `flex`,
@@ -382,6 +482,15 @@ export default function About() {
 		// y: isCompSelected ? `-30vh` : `0vh`
 	});
 
+	// Functions
+	function handleThesisBtnClick ( ) {
+		setIsThesisSelected(!isThesisSelected)
+	};
+	function compSelectedQ (val :string ) {
+		return compSelected === val
+	};
+
+	// Main
 	return (
 		<PageBox>
 			<PageStack spacing='5vh'>
@@ -393,118 +502,26 @@ export default function About() {
 					<TitleCard style={{...compAnimationForTitleCard}} />
 
 					{/* Core Competencies */}
-					<Box sx={{textAlign:'center', display:'block'}}>
-						<DisplayPanel style={{...compAnimationForCompCard}}>
-
-						<Typography variant='h2'>
-							Core Competencies
-						</Typography>
-						
-						<br/>
-						
-						<Grid container direction='row' justifyContent='space-evenly'>
-							{tmpButtonObj.map(
-								obj => {return (
-									<AnimatedButton
-										sx={{height:'10vh',width:'40vh'}}
-										isSelected={ compSelectedQ( obj.key ) }
-										onClick={ () => handleCompBtnClick( obj.key ) }
-									>
-										{obj.text}
-									</AnimatedButton>
-								);
-							}
-							)}
-						</Grid>
-
-						<br/>
-
-						{
-							!isCompSelected
-							? null
-							: <><CompPanel compSelected={compSelected} /><br/><br/></>
-						}
-						
-						</DisplayPanel>
-					</Box>
+					<CompPanel 
+						compSelected={compSelected}
+						compSelectedQ = {compSelectedQ}
+						isCompSelected = {isCompSelected}
+						setCompSelected = {setCompSelected}
+						setIsCompSelected = {setIsCompSelected}
+					/>
 					
 					{/* Down Arrow */}
-					<AnimatedBox sx={{textAlign: 'center'}}>
-							<Typography>
-								<KeyboardArrowDownIcon sx={{height:100}}/>
-							</Typography>
-					</AnimatedBox>
+					<DownArrow/>
 
 					{/* Education */}
-					<DisplayPanel style={{...compAnimationForCompCard}}>
-						<Typography variant="h2">
-							Academic Background
-						</Typography>
-						<Typography variant="subtitle1" color={theme.palette.text.disabled}>
-							{stringData.about.academicPanel.bsc.location} | {stringData.about.academicPanel.bsc.degreeDate}
-						</Typography>
-						<br />
-						<Grid container spacing={0.1} sx={{width:'90%'}}>
-							<Grid item xs={12} >
-								<OutlinedPaper>
-								<Typography variant="subtitle2" color={theme.palette.text.disabled}>
-									Degree name
-								</Typography>
-								<Typography variant="h4" sx={{alignContent:'left'}}>
-									{stringData.about.academicPanel.bsc.degreeName}
-								</Typography>
-								</OutlinedPaper>
-							</Grid>
-							<Grid item xs={3} >
-								<OutlinedPaper>
-								<Typography variant="subtitle2" color={theme.palette.text.disabled}>
-									Award
-								</Typography>
-								<Typography variant="body1">
-									{stringData.about.academicPanel.bsc.award}
-								</Typography>
-								</OutlinedPaper>
-							</Grid>
-							<Grid item xs={9}>
-								{/* <ButtonBase sx={{width:'100%', textAlign: 'left'}}> */}
-								<AnimatedButton textAlign='left' sx={{width:'99.8%', height:'97.5%'}}
-									onClick={() => handleThesisBtnClick()}
-									isSelected={isThesisSelected}
-								>
-								<Typography variant="subtitle2" color={theme.palette.text.disabled}>
-									Thesis
-								</Typography>
-								<Typography variant="body1">
-									{stringData.about.academicPanel.bsc.thesisName}
-								</Typography>
-								</AnimatedButton>
-								{/* </ButtonBase> */}
-							</Grid>
-							<Grid item xs={12}>
-								{
-									isThesisSelected ? <OutlinedPaper>
-									<Typography variant="subtitle2" color={theme.palette.text.disabled}>
-										Description
-									</Typography>
-									
-										<Typography variant="body1">
-											{stringData.about.academicPanel.bsc.thesisDescription}
-										</Typography>
-									
-									</OutlinedPaper> : null
-								}
-							</Grid>
-							
-						</Grid>
-						<br />
-					</DisplayPanel>
+					<EduPanel
+						theme = {theme}
+						isThesisSelected = {isThesisSelected}
+						handleThesisBtnClick = {handleThesisBtnClick}
+					/>
 					
 					{/* Down Arrow */}
-					<AnimatedBox sx={{textAlign: 'center'}}>
-							<Typography>
-								<KeyboardArrowDownIcon sx={{height:100}}/>
-							</Typography>
-					</AnimatedBox>
+					<DownArrow/>
 
 					{/* Contact Info Card */}
 					<ContactCard style={{...compAnimationForCompCard}}/>
