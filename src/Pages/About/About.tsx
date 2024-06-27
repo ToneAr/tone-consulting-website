@@ -321,7 +321,7 @@ function ContactCard ( props: any ) {
 															</Grid>
 															<Grid item xs={9} sx={{textAlign: 'left',p:0}}>
 																<Typography variant='body1'>
-																	<a  className='link' href={obj.href} >
+																	<a  className={theme.palette.mode === "dark" ? 'darkLink' : 'link'} href={obj.href} >
 																		{`${obj.text}`}
 																	</a>
 																</Typography>

@@ -112,16 +112,28 @@ z-index: 0;
   justify-content: center;
 }
 
-.link {
+.darkLink {
   color: aquamarine;
 }
 
+.darkLink:visited {
+  color: rgb(185, 126, 224);
+}
+
+.darkLink:active {
+  color: rgb(173, 189, 101);
+}
+
+.link {
+  color: rgb(65, 151, 122);
+}
+
 .link:visited {
-  color: rgb(59, 121, 112);
+  color: rgb(109, 69, 133);
 }
 
 .link:active {
-  color: rgb(173, 189, 101);
+  color: rgb(88, 168, 101);
 }
 
 .App-link {
