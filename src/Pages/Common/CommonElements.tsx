@@ -33,6 +33,8 @@ function PageBox ( {className = "background-box", ...props}:props ) {
           sx={{
               // background: theme.palette.background.default,
               color: theme.palette.text.primary,
+              backgroundAttachment: 'fixed',
+              backgroundSize: 'width',
               ...props.sx
           }}
         >
@@ -42,9 +44,8 @@ function PageBox ( {className = "background-box", ...props}:props ) {
 };
 
 function PageStack ( props:props ) {
-  
   return (
-    <Stack direction="column" spacing={props.spacing} sx={props.sx}>
+    <Stack direction="column" spacing={props.spacing ?? '5vh'} sx={props.sx}>
         {props.children}
     </Stack> 
   );
@@ -112,7 +113,6 @@ function OutlinedPaper ( {className = "paper-outlined", ...props}: props ) {
 
 };
 
-
 const buildInteractionObserverThreshold = (count = 100) => {
   const threshold = []
 
@@ -124,7 +124,6 @@ const buildInteractionObserverThreshold = (count = 100) => {
 
   return threshold
 };
-
 
 export {
     PageBox,

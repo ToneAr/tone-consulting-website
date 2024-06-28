@@ -577,48 +577,48 @@ export default function About() {
 		<PageBox>
 			<PageStack spacing='5vh'>
 
-					{/* Spacer */}
-					<Box sx={{height: '10vh'}} />
+				{/* Spacer */}
+				<Box sx={{height: '10vh'}} />
 				
-					{/* Title */}
-					<TitleCard style={{...compAnimationForTitleCard}} />
+				{/* Title */}
+				<TitleCard style={{...compAnimationForTitleCard}} />
 
-					{/* Core Competencies */}
-					<CompPanel 
-						compSelected={compSelected}
-						compSelectedQ = {compSelectedQ}
-						isCompSelected = {isCompSelected}
-						setCompSelected = {setCompSelected}
-						setIsCompSelected = {setIsCompSelected}
-					/>
+				{/* Core Competencies */}
+				<CompPanel 
+					compSelected={compSelected}
+					compSelectedQ = {compSelectedQ}
+					isCompSelected = {isCompSelected}
+					setCompSelected = {setCompSelected}
+					setIsCompSelected = {setIsCompSelected}
+				/>
 					
-					{/* Down Arrow */}
-					<DownArrow/>
+				{/* Down Arrow */}
+				<DownArrow/>
 
-					{/* Education */}
-					<EduPanel
-						theme = {theme}
-						isThesisSelected = {isThesisSelected}
-						handleThesisBtnClick = {handleThesisBtnClick}
-					/>
+				{/* Education */}
+				<EduPanel
+					theme = {theme}
+					isThesisSelected = {isThesisSelected}
+					handleThesisBtnClick = {handleThesisBtnClick}
+				/>
 
-					{/* Down Arrow */}
-					<DownArrow/>
+				{/* Down Arrow */}
+				<DownArrow/>
 
-					{/* Work */}
-					<WorkPanel
-						theme = {theme}
-						compAnimationForCompCard = {compAnimationForCompCard}
-						createHandleWorkBtnClick = {createHandleWorkBtnClick}
-						createExpSelectedQ = {createExpSelectedQ}
-						expSelected = {expSelected}
-					/>
+				{/* Work */}
+				<WorkPanel
+					theme = {theme}
+					compAnimationForCompCard = {compAnimationForCompCard}
+					createHandleWorkBtnClick = {createHandleWorkBtnClick}
+					createExpSelectedQ = {createExpSelectedQ}
+					expSelected = {expSelected}
+				/>
 					
-					{/* Down Arrow */}
-					<DownArrow/>
+				{/* Down Arrow */}
+				<DownArrow/>
 
-					{/* Contact Info Card */}
-					<ContactCard style={{...compAnimationForCompCard}}/>
+				{/* Contact Info Card */}
+				<ContactCard style={{...compAnimationForCompCard}}/>
 				
 				<Paper/>
 
