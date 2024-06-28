@@ -12,15 +12,16 @@ const AnimatedButton: any = (props: any) => {
 		
 	const [isHovered, setIsHovered] = React.useState<boolean>(false);
 	// const [angle, setAngle] = React.useState<number>(30);
-
 	const bgColor = theme.palette.mode === 'dark' ? '#01010177' : '#fff4';
-	
+
+	let isSelected = props.isSelected ?? false;
+
 	const borderColor =
 		theme.palette.mode === 'dark'
-			? (isHovered || props.isSelected) ? '#777' : '#333' //Dark
-			: (isHovered || props.isSelected) ? '#555' : '#aaa' //Light
+			? (isHovered || isSelected) ? '#777' : '#333' //Dark
+			: (isHovered || isSelected) ? '#555' : '#aaa' //Light
 	
-	let isSelected = props.isSelected ?? false;
+	
 	const bgAnimation = useSpring({
 			background:
 				`
@@ -85,9 +86,7 @@ const AnimatedButton: any = (props: any) => {
 			? bgAnimation
 			: staticBgAnimation
 	}
-
-
-
+	
 	return (
 		<AnimatedBox
 			style={{
@@ -123,7 +122,6 @@ const AnimatedButton: any = (props: any) => {
 					style={{
 						textAlign: props.textAlign,
 						...fontAnimation
-
 					}}
 				>
 					{props.children}

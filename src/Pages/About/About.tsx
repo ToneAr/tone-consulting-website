@@ -5,7 +5,7 @@ import { Box, Grid, Paper, Stack, Typography, useTheme } from "@mui/material";
 import { useSpring, animated, useScroll } from '@react-spring/web';
 import AnimatedButton from "../Common/AnimatedButton";
 import { PageBox, DisplayPanel, PageStack, OutlinedPaper } from '../Common/CommonElements';
-import { useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 	
 	// Assets
@@ -26,6 +26,7 @@ import {ReactComponent as GitHubSVG } from '../../Resources/github.svg';
 	
 	// Data
 import stringData from '../../Resources/raw-strings.json';
+import { Padding } from "@mui/icons-material";
 
 function TitleCard ( props: any ) {
 	
@@ -82,7 +83,6 @@ function TitleCard ( props: any ) {
 			tension: 500
 		}
 	});
-	console.log(stringData);
 
 	return <>
 		<Box className={props.className} sx={{textAlign:'center', ...props.sx}}>
@@ -234,13 +234,86 @@ function ModelPanel ( props: any ) {
 	</Grid>
 };
 
+function WorkPanel ( props : any ) {
+	
+	return <DisplayPanel style={{...props.compAnimationForCompCard}}>
+		<Typography variant="h2">
+			Professional Experience
+		</Typography>
+		<Typography variant="subtitle1" color={props.theme.palette.text.disabled}>
+			{stringData.about.workPanel.wolfram.location} | {stringData.about.workPanel.wolfram.date}
+		</Typography>
+		<br />
+		<Grid container spacing={0.1} sx={{width:'90%'}}>
+			<Grid item xs={5}>
+				<OutlinedPaper sx={{height:'65%'}}>
+				<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
+					Position
+				</Typography>
+				<Typography variant="h4">
+					{stringData.about.workPanel.wolfram.position}
+				</Typography>
+				</OutlinedPaper>
+			</Grid>
+			<Grid item xs={7}>
+				<OutlinedPaper sx={{height:'65%'}}>
+				<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
+					Employer
+				</Typography>
+				<Typography variant="h4" sx={{alignContent:'left'}}>
+					{stringData.about.workPanel.wolfram.name}
+				</Typography>
+				</OutlinedPaper>
+			</Grid>
+			<Grid item xs={12}>
+				<OutlinedPaper >
+				<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
+					Responsibilities & Projects 
+				</Typography>
+				<Stack spacing={0.3}>
+					{
+						Object.entries(stringData.about.workPanel.wolfram.experience).map(
+							([key, value]) => <>
+								<AnimatedButton
+									onClick={ props.createHandleWorkBtnClick(key) }
+									isSelected={ props.createExpSelectedQ(key) }
+									sx={{alignContent: 'left'}}
+								>
+									{ value.title }
+								</AnimatedButton>
+								<>
+								<Grid item xs={12}>
+									{
+										props.expSelected === key ? <OutlinedPaper>
+										<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
+											Description
+										</Typography>
+											<Typography variant="body1">
+												{value.desc}
+											</Typography>
+										</OutlinedPaper> : null
+									}
+								</Grid>
+								</>
+							</>
+						)
+					}
+				</Stack>
+				</OutlinedPaper>
+			</Grid>
+			
+		</Grid>
+		<br />
+	</DisplayPanel>
+}
+
 function EduPanel ( props : any ) {
 	return <DisplayPanel style={{...props.compAnimationForCompCard}}>
 		<Typography variant="h2">
 			Academic Background
 		</Typography>
 		<Typography variant="subtitle1" color={props.theme.palette.text.disabled}>
-			{stringData.about.academicPanel.bsc.location} | {stringData.about.academicPanel.bsc.degreeDate}
+			{stringData.about.academicPanel.bsc.location} | {stringData.about.academicPanel.bsc.date}
 		</Typography>
 		<br />
 		<Grid container spacing={0.1} sx={{width:'90%'}}>
@@ -265,31 +338,27 @@ function EduPanel ( props : any ) {
 				</OutlinedPaper>
 			</Grid>
 			<Grid item xs={9}>
-				{/* <ButtonBase sx={{width:'100%', textAlign: 'left'}}> */}
 				<AnimatedButton textAlign='left' sx={{width:'99.8%', height:'97.5%'}}
 					onClick={() => props.handleThesisBtnClick()}
 					isSelected={props.isThesisSelected}
 				>
-				<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
-					Thesis
-				</Typography>
-				<Typography variant="body1">
-					{stringData.about.academicPanel.bsc.thesisName}
-				</Typography>
+					<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
+						Thesis
+					</Typography>
+					<Typography variant="body1">
+						{stringData.about.academicPanel.bsc.thesisName}
+					</Typography>
 				</AnimatedButton>
-				{/* </ButtonBase> */}
 			</Grid>
 			<Grid item xs={12}>
 				{
 					props.isThesisSelected ? <OutlinedPaper>
-					<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
-						Description
-					</Typography>
-					
+						<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
+							Description
+						</Typography>
 						<Typography variant="body1">
 							{stringData.about.academicPanel.bsc.thesisDescription}
 						</Typography>
-					
 					</OutlinedPaper> : null
 				}
 			</Grid>
@@ -334,7 +403,6 @@ function CompPanel ( props : any ) {
 		</Grid>
 
 		<br/>
-		{console.log(props.compSelected)}
 		{
 			!props.isCompSelected
 			? null
@@ -468,13 +536,14 @@ export default function About() {
 
 	// Constants
 	const theme = useTheme();
+	const [ expSelected, setExpSelected ] = useState<string | null>(null);
 	const [ isCompSelected, setIsCompSelected ] = useState<true | false>(false);
 	const [ compSelected, setCompSelected] = useState<string | null>(null);
 	const [ isThesisSelected, setIsThesisSelected ] = useState<boolean>(false);
 
 	// Springs
 	const compAnimationForTitleCard = useSpring({
-		scaleY: isCompSelected ? `0%` : `100%`,
+		scaleY:  isCompSelected ? `0%` : `100%`,
 		display: isCompSelected ? `none` : `flex`,
 		opacity: isCompSelected ? 0 : 1,
 	});
@@ -482,11 +551,24 @@ export default function About() {
 		// y: isCompSelected ? `-30vh` : `0vh`
 	});
 
+	
 	// Functions
-	function handleThesisBtnClick ( ) {
+	function handleThesisBtnClick ( ) : void {
 		setIsThesisSelected(!isThesisSelected)
 	};
-	function compSelectedQ (val :string ) {
+	function createHandleWorkBtnClick ( key : string ) : Function {
+		return () : void =>{
+			setExpSelected(
+				(expSelected === null || key !== expSelected)
+				? key
+				: null
+			)
+		}
+	};
+	function createExpSelectedQ ( key : string ) : boolean {
+		return expSelected === key
+	};
+	function compSelectedQ (val :string ) : boolean {
 		return compSelected === val
 	};
 
@@ -518,6 +600,18 @@ export default function About() {
 						theme = {theme}
 						isThesisSelected = {isThesisSelected}
 						handleThesisBtnClick = {handleThesisBtnClick}
+					/>
+
+					{/* Down Arrow */}
+					<DownArrow/>
+
+					{/* Work */}
+					<WorkPanel
+						theme = {theme}
+						compAnimationForCompCard = {compAnimationForCompCard}
+						createHandleWorkBtnClick = {createHandleWorkBtnClick}
+						createExpSelectedQ = {createExpSelectedQ}
+						expSelected = {expSelected}
 					/>
 					
 					{/* Down Arrow */}
