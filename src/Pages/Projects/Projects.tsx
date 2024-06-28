@@ -26,7 +26,7 @@ export default function Projects() {
             </Typography>
 
             <Typography variant='body1'>
-              I'm just projecting
+              Coming Soon
             </Typography>
 
           </DisplayPanel>

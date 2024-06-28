@@ -12,6 +12,7 @@ import ErrorPage from "./Pages/Common/ErrorPage";
 import About from "./Pages/About/About";
 import Projects from "./Pages/Projects/Projects";
 import Blog from "./Pages/Blog/Blog";
+import Music from "./Pages/Music/Music";
 
 const router = createBrowserRouter([
 	{path: "/",
@@ -29,6 +30,9 @@ const router = createBrowserRouter([
 			},
 			{path: "blog",
 					element: <Blog />
+			},
+			{path: "music",
+				element: <Music />
 			}
 		]
 	},

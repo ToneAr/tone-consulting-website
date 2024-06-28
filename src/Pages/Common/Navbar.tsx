@@ -24,9 +24,12 @@ const pageObjectArray: Array<IPageObjArray> = [
     {page:'Projects',
         key:'Projects'
     },
+    {page:'Music',
+      key:'Music'
+    },
     {page:'Blog',
         key:'Blog'
-    }
+    },
 ];
 
 

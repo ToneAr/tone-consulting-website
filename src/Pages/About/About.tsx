@@ -1,13 +1,11 @@
 //Imports
-	
 	// Extensions
 import { Box, Grid, Paper, Stack, Typography, useTheme } from "@mui/material";
 import { useSpring, animated, useScroll } from '@react-spring/web';
-import AnimatedButton from "../Common/AnimatedButton";
-import { PageBox, DisplayPanel, PageStack, OutlinedPaper } from '../Common/CommonElements';
 import { ReactElement, useEffect, useState } from "react";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-	
+	// Custom Extensions
+import AnimatedButton from "../Common/AnimatedButton";
+import { PageBox, DisplayPanel, PageStack, OutlinedPaper, DownArrow } from '../Common/CommonElements';
 	// Assets
 // import phoneIcon from'../../Resources/telephone.png';
 // import linkedInIcon from'../../Resources/social.png';
@@ -23,7 +21,6 @@ import {ReactComponent as LinkedInSVG } from '../../Resources/linkedin.svg';
 import {ReactComponent as GitHubSVG } from '../../Resources/github.svg';
 // import linkedInIconDark from'../../Resources/dark-linkedin.png';
 // import githubIconDark from '../../Resources/dark-github.png';
-	
 	// Data
 import stringData from '../../Resources/raw-strings.json';
 import { Padding } from "@mui/icons-material";
@@ -305,7 +302,7 @@ function WorkPanel ( props : any ) {
 		</Grid>
 		<br />
 	</DisplayPanel>
-}
+};
 
 function EduPanel ( props : any ) {
 	return <DisplayPanel style={{...props.compAnimationForCompCard}}>
@@ -515,15 +512,6 @@ function ContactCard ( props: any ) {
 		</Grid>
 		<br/>
 	</DisplayPanel>
-}; 
-
-function DownArrow ( props : any ) {
-	const AnimatedBox = animated(Box);
-	return <AnimatedBox sx={{textAlign: 'center'}}>
-		<Typography>
-			<KeyboardArrowDownIcon sx={{height:100}}/>
-		</Typography>
-	</AnimatedBox>
 };
 
 export default function About() {
@@ -575,7 +563,7 @@ export default function About() {
 	// Main
 	return (
 		<PageBox>
-			<PageStack spacing='5vh'>
+			<PageStack>
 
 				{/* Spacer */}
 				<Box sx={{height: '10vh'}} />
@@ -625,7 +613,7 @@ export default function About() {
 			</PageStack>
 		</PageBox>
 	);
-}
+};
 
 const tmpButtonObj = [
 	{text:'Full-Stack Development',

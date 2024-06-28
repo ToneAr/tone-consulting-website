@@ -1,7 +1,8 @@
-import { Box, Grow, Paper, Stack, useTheme } from "@mui/material";
+import { Box, Grow, Paper, Stack, Typography, useTheme } from "@mui/material";
 import { animated, easings, useInView, useSpring, useTransition } from "react-spring";
 import dayForestImg from '../../Resources/daytime-forest.jpg';
 import nightForestImg from '../../Resources/nighttime-forest.jpg';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useState } from "react";
 
 type props = {
@@ -41,6 +42,16 @@ function PageBox ( {className = "background-box", ...props}:props ) {
             {props.children}
         </AnimatedBox>
     );
+};
+
+
+function DownArrow ( props : any ) {
+	const AnimatedBox = animated(Box);
+	return <AnimatedBox sx={{textAlign: 'center'}}>
+		<Typography>
+			<KeyboardArrowDownIcon sx={{height:100}}/>
+		</Typography>
+	</AnimatedBox>
 };
 
 function PageStack ( props:props ) {
@@ -130,5 +141,6 @@ export {
     DisplayPanel,
     PageStack,
     OutlinedPaper,
-    buildInteractionObserverThreshold
+    buildInteractionObserverThreshold,
+    DownArrow
 };

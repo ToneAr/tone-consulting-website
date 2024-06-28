@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import { Box, Grid, Paper, Stack, Typography, useTheme } from '@mui/material';
 import { useSpring, animated, useSprings } from "react-spring";
 import { easings } from '@react-spring/web';
+import WarningIcon from '@mui/icons-material/Warning';
 import stringData from '../../Resources/raw-strings.json';
 
 import {
@@ -61,7 +62,8 @@ function Home() {
     <PageBox>
         <PageStack>
           
-          <Paper/>
+          {/* Spacer */}
+				  <Box sx={{height: '10vh'}} />
 
           <DisplayPanel>
             
@@ -102,6 +104,14 @@ function Home() {
             <br />
 
           </DisplayPanel>
+
+          <DisplayPanel>
+              <Typography variant='h1' color={theme.palette.warning.main} textAlign={'center'}>
+                <WarningIcon sx={{fontSize: 150}}/><br/>This page is still under construction
+              </Typography>
+          </DisplayPanel>
+
+          <Box sx={{height: '10vh'}} />
 
         </PageStack>
 

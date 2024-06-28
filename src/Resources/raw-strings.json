@@ -43,43 +43,43 @@
                 "experience" : {
                     "cogniTool" : {
                         "title" : "Medically certified cognitive testing web application ",
-                        "desc" : ""
+                        "desc" : "WIP"
                     },
                     "bpTool" : {
                         "title" : "Desktop application for hypertensive patient tracking and treatment plan creation",
-                        "desc" : ""
+                        "desc" : "WIP"
                     },
                     "interventionsTool" : {
                         "title" : "Importing, structuring and visualizing framework for Census 2012",
-                        "desc" : ""
+                        "desc" : "WIP"
                     },
                     "legalTool" : {
                         "title" : "Workplace law desktop application to more effectively and efficiently compute client restructures",
-                        "desc" : ""
+                        "desc" : "WIP"
                     },
                     "fanTool" : {
                         "title" : "API suite for industrial machine power-draw optimization and optimal machine combination",
-                        "desc" : ""
+                        "desc" : "WIP"
                     },
                     "priceTool" : {
                         "title" : "Interactive price fetching and displaying web application",
-                        "desc" : ""
+                        "desc" : "WIP"
                     },
                     "wasTool" : {
                         "title" : "Wolfram Application Server deployment",
-                        "desc" : ""
+                        "desc" : "WIP"
                     },
                     "scopeExp" : {
                         "title" : "Scope and design solution projects",
-                        "desc" : ""
+                        "desc" : "WIP"
                     },
                     "clientExp" : {
                         "title" : "Meet with- and present to clients",
-                        "desc"  : ""
+                        "desc"  : "WIP"
                     },
                     "teachExp" : {
                         "title" : "Teach and present the Wolfram Language",
-                        "desc" : ""
+                        "desc" : "WIP"
                     }
                 }
             }
