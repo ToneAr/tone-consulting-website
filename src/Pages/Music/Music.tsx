@@ -5,11 +5,11 @@ import React from 'react';
 import { useSpring, animated } from 'react-spring';
 import AnimatedButton from '../Common/AnimatedButton';
 
-export default function Blog() {
+export default function Music() {
   const theme = useTheme();
 
   useEffect(() => {
-    document.title = "TONE : Blog";
+    document.title = "TONE : Music";
     window.scrollBy(0, 70);
   }, []);
 
@@ -23,7 +23,7 @@ export default function Blog() {
           <DisplayPanel>
 
             <Typography variant='h1'>
-              Blog
+                Music
             </Typography>
 
             <Typography variant='body1'>

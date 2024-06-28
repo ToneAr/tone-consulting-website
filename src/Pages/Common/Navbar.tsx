@@ -9,6 +9,8 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { IconButton, useTheme } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { animated, useSpring } from 'react-spring';
 
 
 interface IPageObjArray {
@@ -16,34 +18,76 @@ interface IPageObjArray {
     key: string;
 };
 const pageObjectArray: Array<IPageObjArray> = [
-    {page:'CV',
+    {page:'About',
         key:'About me'
     },
     {page:'Projects',
         key:'Projects'
     },
+    {page:'Music',
+      key:'Music'
+    },
     {page:'Blog',
         key:'Blog'
-    }
+    },
 ];
+
+
 
 function Navbar({ colorMode } : {colorMode: any}) {
   
   const navigate = useNavigate();
   const theme = useTheme();
 
+  const [ show, setShow ] = useState<Boolean>(true);
+  const [lastScrollY, setLastScrollY] = useState<number>(0);
+
+  const [ styles, springApi ]  = useSpring(()=>({
+      from:{ y:0 },
+      config:{  friction: 25 }
+    })
+  );
+
+  const controlNavbar = () => {
+    if (window.scrollY > lastScrollY) {
+      // setShow(false); 
+      springApi.start({
+        y: -70
+      })
+    } else {
+      // setShow(true);
+      springApi.start({
+        y: 0
+      })
+    }
+    setLastScrollY(window.scrollY); 
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNavbar);
+
+    return () => {
+       window.removeEventListener('scroll', controlNavbar);
+    };
+  
+  }, [lastScrollY]);
+
+  const AnimatedAppBar = animated(AppBar);
+  const AnimatedContainer = animated(Container);
+
+  // className={`navbar ${ show && 'hidden' }`}
   return (
-    <AppBar position="static" >
-      <Container maxWidth="xl" >
+    <AnimatedAppBar style={{...styles}}>
+      <AnimatedContainer maxWidth="xl" >
         <Toolbar disableGutters  >
-          <Link to="/" style={{textDecoration: 'none',}}>
+          <Link to="/" style={{textDecoration: 'none'}}>
             <Typography
               variant="h6"
               noWrap
               component="a"
               sx={{
                 mr: 2,
-                display: { xs: 'none', md: 'flex' },
+                display: { md: 'flex' },
                 fontWeight: 700,
                 letterSpacing: '.3rem',
                 color: 'white',
@@ -51,10 +95,10 @@ function Navbar({ colorMode } : {colorMode: any}) {
               }}
             >
               TONE
-            </Typography>       
+            </Typography>
           </Link>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { md: 'flex' } }}>
             
             {pageObjectArray.map((obj) => (
 
@@ -74,14 +118,14 @@ function Navbar({ colorMode } : {colorMode: any}) {
             <Box>
 
           <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+              {theme.palette.mode === 'light' ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
           
       </Box>
 
         </Toolbar>
-      </Container>
-    </AppBar>
+      </AnimatedContainer>
+    </AnimatedAppBar>
   );
 }
 export default Navbar;
