@@ -11,7 +11,7 @@ import {
   DisplayPanel,
   PageStack,
   OutlinedPaper
-} from '../Common/CommonElements';
+} from '../../Common/CommonElements';
 
 function Home() {
 

@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Navbar from './Pages/Common/Navbar';
+import Navbar from './Common/Navbar';
 import { CssBaseline, ScopedCssBaseline, ThemeProvider, createTheme, darkScrollbar, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 

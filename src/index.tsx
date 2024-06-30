@@ -8,7 +8,7 @@ import './CSS/index.css';
 
 import App from './App';
 import Home from './Pages/Home/Home';
-import ErrorPage from "./Pages/Common/ErrorPage";
+import ErrorPage from "./Common/ErrorPage";
 import About from "./Pages/About/About";
 import Projects from "./Pages/Projects/Projects";
 import Blog from "./Pages/Blog/Blog";
