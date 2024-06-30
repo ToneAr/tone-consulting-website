@@ -4,8 +4,8 @@ import { Box, Grid, Paper, Stack, Typography, useTheme } from "@mui/material";
 import { useSpring, animated, useScroll } from '@react-spring/web';
 import { ReactElement, useEffect, useState } from "react";
 	// Custom Extensions
-import AnimatedButton from "../Common/AnimatedButton";
-import { PageBox, DisplayPanel, PageStack, OutlinedPaper, DownArrow } from '../Common/CommonElements';
+import AnimatedButton from "../../Common/AnimatedButton";
+import { PageBox, DisplayPanel, PageStack, OutlinedPaper, DownArrow } from '../../Common/CommonElements';
 	// Assets
 // import phoneIcon from'../../Resources/telephone.png';
 // import linkedInIcon from'../../Resources/social.png';

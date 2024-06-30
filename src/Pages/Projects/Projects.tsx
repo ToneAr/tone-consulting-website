@@ -1,6 +1,6 @@
 import { Box, Paper, Stack, Typography, useTheme } from "@mui/material";
 
-import {PageBox, DisplayPanel, PageStack} from '../Common/CommonElements';
+import {PageBox, DisplayPanel, PageStack} from '../../Common/CommonElements';
 import { useEffect } from "react";
 
 export default function Projects() {

@@ -1,7 +1,7 @@
 import { Box, Grow, Paper, Stack, Typography, useTheme } from "@mui/material";
 import { animated, easings, useInView, useSpring, useTransition } from "react-spring";
-import dayForestImg from '../../Resources/daytime-forest.jpg';
-import nightForestImg from '../../Resources/nighttime-forest.jpg';
+import dayForestImg from '../Resources/daytime-forest.jpg';
+import nightForestImg from '../Resources/nighttime-forest.jpg';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useState } from "react";
 
