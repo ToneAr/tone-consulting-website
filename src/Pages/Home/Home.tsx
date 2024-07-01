@@ -107,7 +107,7 @@ function Home() {
 
           <DisplayPanel>
               <Typography variant='h1' color={theme.palette.warning.main} textAlign={'center'}>
-                <WarningIcon sx={{fontSize: 150}}/><br/>This site is still under construction
+                <WarningIcon sx={{fontSize: 150}}/><br/>This site is under construction
               </Typography>
           </DisplayPanel>
 
