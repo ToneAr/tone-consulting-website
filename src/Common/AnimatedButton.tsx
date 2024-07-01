@@ -1,8 +1,8 @@
 import { Box, ButtonBase, Typography, useTheme } from "@mui/material";
-import React, { RefObject, useEffect, useRef, useState } from "react";
+import React, { ReactElement, RefObject, useEffect, useRef, useState } from "react";
 import { animated, useSpring, useSpringRef } from "react-spring";
 
-const AnimatedButton: any = (props: any) => {
+function AnimatedButton ( props : any ) : ReactElement {
 
 	const theme = useTheme();
 	
@@ -103,7 +103,6 @@ const AnimatedButton: any = (props: any) => {
 				borderStyle: 'solid',
 				borderWidth: '1px',
 				height: 50,
-				alignContent: 'center',
 				borderRadius: 4,
 				backgroundSize: '100% 100%',
 				...getBgAnimation(),
@@ -128,12 +127,19 @@ const AnimatedButton: any = (props: any) => {
 				onClick={props.onClick}
 			>
 				<AnimatedTypography
+					sx = {{
+						px: '1%',
+					}}
 					style={{
-						textAlign: props.textAlign,
+						flex: 1,
+						textAlign: props.textAlign ?? 'center',
 						...fontAnimation
 					}}
 				>
-					{props.children}
+					<Typography
+						variant='subtitle2'
+						color={theme.palette.text.disabled}
+					>{props.label ?? ''}</Typography>{props.children}
 				</AnimatedTypography>
 			</ButtonBase>
 		</AnimatedBox>

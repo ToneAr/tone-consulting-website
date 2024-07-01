@@ -99,27 +99,44 @@ function DisplayPanel ( {className = "paper", elevation = 8, ...props}: any ) {
           style={{
             padding:10,
             backdropFilter: `blur(10px)`,
+            textAlign: 'center',
             ...backgroundAnimation,
             ...styles,
             ...props.style
           }}
         >
-          {props.children}
+          <Box
+            sx={{width: '95%'}}
+          >
+            {props.children}
+          </Box>
         </AnimatedPaper>
     );
 };
 
 function OutlinedPaper ( {className = "paper-outlined", ...props}: props ) {
     const theme = useTheme();
+    const AnimatedPaper = animated(Paper);
+    const backgroundAnimation = useSpring({
+      background: theme.palette.mode === 'dark' ? "#000b" : "#fffb",
+      config: {
+        friction: 40
+      }
+    });
     return (
-        <Paper className={className} variant='outlined' sx={{
-            background: theme.palette.mode === 'dark' ? "#000b" : "#fffb",
+        <AnimatedPaper className={className}
+          style={backgroundAnimation}
+          variant='outlined'
+          sx={{
             padding:2,
+            textAlign: 'left',
             ...props.sx
           }}
         >
-          {props.children}
-        </Paper>
+          <Box>
+            {props.children}
+          </Box>
+        </AnimatedPaper>
     );
 
 };
