@@ -2,10 +2,11 @@
 	// Extensions
 import { Box, Grid, Paper, Stack, Typography, useTheme } from "@mui/material";
 import { useSpring, animated, useScroll } from '@react-spring/web';
+import Divider from '@mui/material/Divider';
 import { ReactElement, useEffect, useState } from "react";
 	// Custom Extensions
-import AnimatedButton from "../Common/AnimatedButton";
-import { PageBox, DisplayPanel, PageStack, OutlinedPaper, DownArrow } from '../Common/CommonElements';
+import AnimatedButton from "../../Common/AnimatedButton";
+import { PageBox, DisplayPanel, PageStack, OutlinedPaper, DownArrow } from '../../Common/CommonElements';
 	// Assets
 // import phoneIcon from'../../Resources/telephone.png';
 // import linkedInIcon from'../../Resources/social.png';
@@ -113,7 +114,7 @@ function TitleCard ( props: any ) {
 };
 
 function DevPanel ( props: any ) {
-	return <Grid container spacing={4.3} sx={{width: '90%'}}>
+	return <Grid container spacing={4.3} sx={{width: '100%'}}>
 	<Grid item xs={12}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',mb:-4, textAlign:'justify', p:2}}>
 		<Typography variant='h5'>
@@ -154,7 +155,7 @@ function DevPanel ( props: any ) {
 
 function TeachPanel ( props: any ) {
 	const theme = useTheme();
-	return <Grid container spacing={4.3} sx={{width: '90%'}}>
+	return <Grid container spacing={4.3} sx={{width: '100%'}}>
 		<Grid item xs={12}>
 		<OutlinedPaper sx={{display:'flex', alignItems: 'center', width: '100%', height: '100%', p:2}}>
 			<Grid container>
@@ -213,7 +214,7 @@ function TeachPanel ( props: any ) {
 };
 
 function ModelPanel ( props: any ) {
-	return <Grid container spacing={4.3} sx={{width: '90%'}}>
+	return <Grid container spacing={4.3} sx={{width: '100%'}}>
 	<Grid item xs={12}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', mb:-4 , p:2}}>
 		<Typography variant='h5'>
@@ -232,18 +233,19 @@ function ModelPanel ( props: any ) {
 };
 
 function WorkPanel ( props : any ) {
-	
 	return <DisplayPanel style={{...props.compAnimationForCompCard}}>
 		<Typography variant="h2">
 			Professional Experience
 		</Typography>
-		<Typography variant="subtitle1" color={props.theme.palette.text.disabled}>
-			{stringData.about.workPanel.wolfram.location} | {stringData.about.workPanel.wolfram.date}
-		</Typography>
-		<br />
-		<Grid container spacing={0.1} sx={{width:'90%'}}>
+		<br/>
+		<Divider>
+			<Typography variant="subtitle1" color={props.theme.palette.text.disabled}>
+				{stringData.about.workPanel.wolfram.location} | {stringData.about.workPanel.wolfram.date}
+			</Typography>
+		</Divider>
+		<Grid container spacing={0.1} sx={{width:'100%'}}>
 			<Grid item xs={5}>
-				<OutlinedPaper sx={{height:'65%'}}>
+				<OutlinedPaper>
 				<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
 					Position
 				</Typography>
@@ -253,7 +255,7 @@ function WorkPanel ( props : any ) {
 				</OutlinedPaper>
 			</Grid>
 			<Grid item xs={7}>
-				<OutlinedPaper sx={{height:'65%'}}>
+				<OutlinedPaper>
 				<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
 					Employer
 				</Typography>
@@ -263,35 +265,43 @@ function WorkPanel ( props : any ) {
 				</OutlinedPaper>
 			</Grid>
 			<Grid item xs={12}>
-				<OutlinedPaper >
-				<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
-					Responsibilities & Projects 
+			<OutlinedPaper>
+				<Typography
+					variant="subtitle2"
+					color={props.theme.palette.text.disabled}
+				>
+					Responsibilities & Projects
 				</Typography>
-				<Stack spacing={0.3}>
+				<Box
+					height = {10} 
+				/>
+				<Stack spacing={1}>
 					{
 						Object.entries(stringData.about.workPanel.wolfram.experience).map(
 							([key, value]) => <>
 								<AnimatedButton
+								
+									sx={{
+										height:'50pt',
+									}}
+									textAlign = 'left'
 									onClick={ props.createHandleWorkBtnClick(key) }
 									isSelected={ props.createExpSelectedQ(key) }
-									sx={{alignContent: 'left'}}
+									label={value.label}
 								>
 									{ value.title }
 								</AnimatedButton>
-								<>
-								<Grid item xs={12}>
-									{
-										props.expSelected === key ? <OutlinedPaper>
-										<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
-											Description
+								{
+									props.expSelected === key ? <Grid item xs={12}><OutlinedPaper>
+									<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
+										Description
+									</Typography>
+										<Typography variant="body1">
+											{value.desc}
 										</Typography>
-											<Typography variant="body1">
-												{value.desc}
-											</Typography>
-										</OutlinedPaper> : null
-									}
-								</Grid>
-								</>
+									</OutlinedPaper></Grid> : null
+								}
+								<Divider/>
 							</>
 						)
 					}
@@ -308,12 +318,13 @@ function EduPanel ( props : any ) {
 	return <DisplayPanel style={{...props.compAnimationForCompCard}}>
 		<Typography variant="h2">
 			Academic Background
-		</Typography>
-		<Typography variant="subtitle1" color={props.theme.palette.text.disabled}>
-			{stringData.about.academicPanel.bsc.location} | {stringData.about.academicPanel.bsc.date}
-		</Typography>
-		<br />
-		<Grid container spacing={0.1} sx={{width:'90%'}}>
+		</Typography><br />
+		<Divider>
+			<Typography variant="subtitle1" color={props.theme.palette.text.disabled}>
+				{stringData.about.academicPanel.bsc.location} | {stringData.about.academicPanel.bsc.date}
+			</Typography>
+		</Divider>
+		<Grid container spacing={0.1} sx={{width:'100%'}}>
 			<Grid item xs={12} >
 				<OutlinedPaper>
 				<Typography variant="subtitle2" color={props.theme.palette.text.disabled}>
@@ -375,8 +386,7 @@ function CompPanel ( props : any ) {
 			props.setIsCompSelected(true)
 		}
 	};
-	return <Box sx={{textAlign:'center', display:'block'}}>
-		<DisplayPanel style={{...props.compAnimationForCompCard}}>
+	return <DisplayPanel style={{...props.compAnimationForCompCard}}>
 
 		<Typography variant='h2'>
 			Core Competencies
@@ -384,11 +394,11 @@ function CompPanel ( props : any ) {
 		
 		<br/>
 		
-		<Grid container direction='row' justifyContent='space-evenly'>
+		<Grid width='100%' container direction='row' justifyContent='space-evenly'>
 			{tmpButtonObj.map(
 				obj => {return (
 					<AnimatedButton
-						sx={{height:'10vh',width:'40vh'}}
+						sx={{height:'10vh',width:'20vw'}}
 						isSelected={ props.compSelectedQ( obj.key ) }
 						onClick={ () => handleCompBtnClick( obj.key ) }
 					>
@@ -414,7 +424,6 @@ function CompPanel ( props : any ) {
 		}
 		
 		</DisplayPanel>
-	</Box>
 };
 
 function ContactCard ( props: any ) {
@@ -462,20 +471,20 @@ function ContactCard ( props: any ) {
 		}
 	};
 	
-	return <DisplayPanel style={{...props.style}}>
+	return <DisplayPanel style={{...props.style, width:'100%'}}>
 		<Typography variant='h2'>
 			Details
 		</Typography>
 		
 		<br/>
-		<Grid container spacing={10} direction='row' justifyContent='space-around' sx={{maxWidth: '75vw', textAlign: 'center'}}>
+		<Grid container spacing={10} direction='row' sx={{textAlign: 'center'}}>
 				{
 					Object.values(contactsObjectArray).map( (values) => {
 							return <Grid item xs={6}>
 								<OutlinedPaper className='paper-row'>
 									<Stack spacing={2} >
 
-										<Typography variant='h5' sx={{color: theme.palette.text.secondary}}>
+										<Typography variant='h5' sx={{color: theme.palette.text.secondary, textAlign: 'center'}}>
 											{`${values.title}`}
 										</Typography>
 
@@ -492,7 +501,7 @@ function ContactCard ( props: any ) {
 															</Grid>
 															<Grid item xs={9} sx={{textAlign: 'left',p:0}}>
 																<Typography variant='body1'>
-																	<a  className={theme.palette.mode === "dark" ? 'darkLink' : 'link'} href={obj.href} >
+																	<a className={theme.palette.mode === "dark" ? 'darkLink' : 'link'} href={obj.href} >
 																		{`${obj.text}`}
 																	</a>
 																</Typography>

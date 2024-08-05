@@ -41,45 +41,55 @@
                 "location" : "Oxfordshire",
                 "date" : "July 2022 - Present",
                 "experience" : {
-                    "cogniTool" : {
-                        "title" : "Medically certified cognitive testing web application ",
-                        "desc" : "WIP"
-                    },
-                    "bpTool" : {
-                        "title" : "Desktop application for hypertensive patient tracking and treatment plan creation",
-                        "desc" : "WIP"
-                    },
-                    "interventionsTool" : {
-                        "title" : "Importing, structuring and visualizing framework for Census 2012",
-                        "desc" : "WIP"
-                    },
-                    "legalTool" : {
-                        "title" : "Workplace law desktop application to more effectively and efficiently compute client restructures",
-                        "desc" : "WIP"
-                    },
-                    "fanTool" : {
-                        "title" : "API suite for industrial machine power-draw optimization and optimal machine combination",
-                        "desc" : "WIP"
-                    },
-                    "priceTool" : {
-                        "title" : "Interactive price fetching and displaying web application",
-                        "desc" : "WIP"
-                    },
-                    "wasTool" : {
-                        "title" : "Wolfram Application Server deployment",
-                        "desc" : "WIP"
-                    },
                     "scopeExp" : {
                         "title" : "Scope and design solution projects",
-                        "desc" : "WIP"
+                        "desc" : "WIP",
+                        "label" : "Experience"
                     },
                     "clientExp" : {
                         "title" : "Meet with- and present to clients",
-                        "desc"  : "WIP"
+                        "desc"  : "WIP",
+                        "label" : "Experience"
                     },
                     "teachExp" : {
                         "title" : "Teach and present the Wolfram Language",
-                        "desc" : "WIP"
+                        "desc" : "WIP",
+                        "label" : "Experience"
+                    },
+                    "cogniTool" : {
+                        "title" : "Medically certified cognitive testing web application ",
+                        "desc"  : "WIP",
+                        "label" : "Project"
+                    },
+                    "bpTool" : {
+                        "title" : "Desktop application for hypertensive patient tracking and treatment plan creation",
+                        "desc" : "WIP",
+                        "label" : "Project"
+                    },
+                    "interventionsTool" : {
+                        "title" : "Importing, structuring and visualizing framework for Census 2012",
+                        "desc" : "WIP",
+                        "label" : "Project"
+                    },
+                    "legalTool" : {
+                        "title" : "Workplace law desktop application to more effectively and efficiently compute client restructures",
+                        "desc" : "WIP",
+                        "label" : "Project"
+                    },
+                    "fanTool" : {
+                        "title" : "API suite for industrial machine power-draw optimization and optimal machine combination",
+                        "desc" : "WIP",
+                        "label" : "Project"
+                    },
+                    "priceTool" : {
+                        "title" : "Interactive price fetching and displaying web application",
+                        "desc" : "WIP",
+                        "label" : "Project"
+                    },
+                    "wasTool" : {
+                        "title" : "Wolfram Application Server deployment",
+                        "desc" : "WIP",
+                        "label" : "Project"
                     }
                 }
             }

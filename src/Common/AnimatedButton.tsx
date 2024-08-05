@@ -1,16 +1,13 @@
 import { Box, ButtonBase, Typography, useTheme } from "@mui/material";
-import React from "react";
-import { animated, useSpring } from "react-spring";
+import React, { ReactElement, RefObject, useEffect, useRef, useState } from "react";
+import { animated, useSpring, useSpringRef } from "react-spring";
 
-interface AnimatedButtonProps {
-	onClick?: Function 
-}
-
-const AnimatedButton: any = (props: any) => {
+function AnimatedButton ( props : any ) : ReactElement {
 
 	const theme = useTheme();
-		
+	
 	const [isHovered, setIsHovered] = React.useState<boolean>(false);
+	const [isInitialized, setIsInitialized] = React.useState<boolean>(false);
 	// const [angle, setAngle] = React.useState<number>(30);
 	const bgColor = theme.palette.mode === 'dark' ? '#01010177' : '#fff4';
 
@@ -38,7 +35,9 @@ const AnimatedButton: any = (props: any) => {
 		} 
 	});
 
+	const api = useSpringRef()
 	const staticBgAnimation = useSpring({
+		ref: api,
 		from:{
 			background: `
 				linear-gradient(
@@ -50,19 +49,7 @@ const AnimatedButton: any = (props: any) => {
 			`,
 			borderColor: borderColor
 		},
-		to:{
-			background: `
-				linear-gradient(
-					45deg,
-					${bgColor} ${ isSelected ? -500 : isHovered ? 0 : 100}%,
-					${ theme.palette.mode ==='dark' ? theme.palette.primary.main : theme.palette.primary.light} ${isHovered ? 50 : 150}}%,
-					${bgColor} ${ isSelected ? -500 : isHovered ? 100 : 200}%
-				)
-			`,
-			borderColor: borderColor
-		},
 		reset: true,
-		config: { duration: 1250 }
 	});
 
 	const fontColor = theme.palette.mode === 'dark' ? '#eee' : '#777';
@@ -82,10 +69,32 @@ const AnimatedButton: any = (props: any) => {
 	const AnimatedTypography = animated(Typography);
 
 	function getBgAnimation () {
-		return (isHovered || props.isCompSelected || props.isSelected)
+		return (init || isHovered || props.isCompSelected || props.isSelected)
 			? bgAnimation
 			: staticBgAnimation
+		
 	}
+
+	const [init, setInit] = useState<boolean>(false);
+	useEffect(() => {
+			api.start({
+				to:{
+					background: `
+						linear-gradient(
+							45deg,
+							${bgColor} ${ isSelected ? -500 : isHovered ? 0 : 100}%,
+							${ theme.palette.mode ==='dark' ? theme.palette.primary.main : theme.palette.primary.light} ${isHovered ? 50 : 150}}%,
+							${bgColor} ${ isSelected ? -500 : isHovered ? 100 : 200}%
+						)
+					`,
+					borderColor: borderColor
+				},
+				config: { duration: 1250 },
+				onRest: () => setInit(true)
+			});
+		},
+		[]
+	);
 	
 	return (
 		<AnimatedBox
@@ -94,7 +103,6 @@ const AnimatedButton: any = (props: any) => {
 				borderStyle: 'solid',
 				borderWidth: '1px',
 				height: 50,
-				alignContent: 'center',
 				borderRadius: 4,
 				backgroundSize: '100% 100%',
 				...getBgAnimation(),
@@ -119,12 +127,19 @@ const AnimatedButton: any = (props: any) => {
 				onClick={props.onClick}
 			>
 				<AnimatedTypography
+					sx = {{
+						px: '1%',
+					}}
 					style={{
-						textAlign: props.textAlign,
+						flex: 1,
+						textAlign: props.textAlign ?? 'center',
 						...fontAnimation
 					}}
 				>
-					{props.children}
+					<Typography
+						variant='subtitle2'
+						color={theme.palette.text.disabled}
+					>{props.label ?? ''}</Typography>{props.children}
 				</AnimatedTypography>
 			</ButtonBase>
 		</AnimatedBox>
