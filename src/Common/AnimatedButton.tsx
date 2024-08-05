@@ -52,7 +52,7 @@ function AnimatedButton ( props : any ) : ReactElement {
 		reset: true,
 	});
 
-	const fontColor = theme.palette.mode === 'dark' ? '#eee' : '#777';
+	const fontColor = theme.palette.mode === 'dark' ? '#999' : '#777';
 	const fontHoverColor = theme.palette.mode === 'dark' ? '#fff' : '#111';
 	const fontAnimation = useSpring({
 		color: (isHovered || props.isSelected) ? fontHoverColor : fontColor
