@@ -6,6 +6,8 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import NightsStayIcon from '@mui/icons-material/NightsStay';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { IconButton, useTheme } from '@mui/material';
@@ -86,6 +88,7 @@ function Navbar({ colorMode } : {colorMode: any}) {
               noWrap
               component="a"
               sx={{
+                fontSize: 28,
                 mr: 2,
                 display: { md: 'flex' },
                 fontWeight: 700,
@@ -118,7 +121,7 @@ function Navbar({ colorMode } : {colorMode: any}) {
             <Box>
 
           <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-              {theme.palette.mode === 'light' ? <Brightness7Icon /> : <Brightness4Icon />}
+              {theme.palette.mode === 'light' ? <LightModeIcon /> : <NightsStayIcon />}
           </IconButton>
           
       </Box>
