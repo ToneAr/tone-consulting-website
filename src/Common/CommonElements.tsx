@@ -54,9 +54,12 @@ function DownArrow ( props : any ) {
 	</AnimatedBox>
 };
 
-function PageStack ( props:props ) {
+function PageStack ( props: any ) {
   return (
-    <Stack direction="column" spacing={props.spacing ?? '5vh'} sx={props.sx}>
+    <Stack
+      direction="column" spacing={props.spacing ?? '5%'}
+      alignItems="center"
+      sx={{...props.sx}}>
         {props.children}
     </Stack> 
   );
@@ -96,8 +99,9 @@ function DisplayPanel ( {className = "paper", elevation = 8, ...props}: any ) {
           ref={ref}
           className={className}
           elevation={elevation}
+          sx={{...props.sx}}
           style={{
-            padding:10,
+            padding:30,
             backdropFilter: `blur(10px)`,
             textAlign: 'center',
             ...backgroundAnimation,
@@ -105,11 +109,11 @@ function DisplayPanel ( {className = "paper", elevation = 8, ...props}: any ) {
             ...props.style
           }}
         >
-          <Box
+          {/* <Box
             sx={{width: '95%'}}
-          >
+          > */}
             {props.children}
-          </Box>
+          {/* </Box> */}
         </AnimatedPaper>
     );
 };

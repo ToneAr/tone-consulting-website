@@ -27,6 +27,9 @@ export default function App () {
                     light: '#194d91',
                     contrastText: '#47008F',
                 },
+                background: {
+                    paper: "#212121aa"
+                }
             },
             typography: {
                 fontFamily: "\"Urbanist\"",

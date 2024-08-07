@@ -43,12 +43,12 @@
                 "experience" : {
                     "scopeExp" : {
                         "title" : "Scope and design solution projects",
-                        "desc" : "WIP",
-                        "label" : "Experience"
+                        "label" : "Experience",
+                        "desc" : "Acted as first technical contact with customers, communicating on their specific needs and scoping the projects for the drafting of the technical agreement."
                     },
                     "clientExp" : {
                         "title" : "Meet with- and present to clients",
-                        "desc"  : "WIP",
+                        "desc"  : "Meet with customers and stakeholders of ongoing projects, discussing progress and ensuring adherence to the customers vision.",
                         "label" : "Experience"
                     },
                     "teachExp" : {

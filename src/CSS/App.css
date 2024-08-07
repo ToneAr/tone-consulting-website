@@ -52,9 +52,6 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  
-  width: 120;
-  height: 120;
 
   z-index: -1;
 
@@ -66,7 +63,8 @@
   overscroll-behavior: contain;
   overflow-y: auto;
   width: 100%;
-  height: 100%;
+  padding-bottom: 10%;
+  padding-top: 10vh;
 }
 
 .paper {
@@ -78,7 +76,6 @@
   width: 85vw;
   min-height: 20vh;
   z-index: 1;
-
   position: relative;
 }
 
@@ -113,7 +110,7 @@ z-index: 0;
 }
 
 .darkLink {
-  color: aquamarine;
+  color: rgb(103, 207, 173);
 }
 
 .darkLink:visited {
@@ -124,16 +121,30 @@ z-index: 0;
   color: rgb(173, 189, 101);
 }
 
+.darkLink:hover {
+  color: rgb(134, 255, 209);
+}
+.darkLink:hover:visited {
+  color: rgb(215, 128, 255);
+}
+
 .link {
-  color: rgb(65, 151, 122);
+  color: rgb(22, 155, 110);
 }
 
 .link:visited {
-  color: rgb(109, 69, 133);
+  color: rgb(166, 119, 228);
 }
 
 .link:active {
   color: rgb(88, 168, 101);
+}
+
+.link:hover:visited {
+  color: rgb(215, 128, 255);
+}
+.link:hover {
+  color: rgb(69, 224, 165);
 }
 
 .App-link {
@@ -147,4 +158,8 @@ z-index: 0;
   to {
     transform: rotate(360deg);
   }
+}
+
+.MuiPaper-elevation {
+  backdrop-filter: blur(10px)
 }
