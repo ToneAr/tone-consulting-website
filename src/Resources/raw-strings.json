@@ -31,7 +31,7 @@
                 "location" : "Swansea University",
                 "award" : "First Class Honors",
                 "thesisName" : "Demonstrating the derivation, coding and use of a PIMC Simulation",
-                "thesisDescription" : "My thesis outlines Feynman’s path integral formulation of quantum dynamics and the challenges of solving its infinite dimensional integrals. It then outlines the creation of a python program which uses the Metropolis Hastings Algorithm (aka ‘Monte Carlo’ algorithm) to find a numeric approximation of various observables of a given system like the vacuum energy or probability density of the system. This is done by solving Feynman’s equations using the Euler-Lagrange equation together with the Monte Carlo algorithm to minimize the system’s action. It concludes by comparing the accuracy of this method with methods like quantum perturbation theory."
+                "thesisDescription" : "Developed a Python program utilizing the Metropolis-Hastings (Monte Carlo) algorithm to numerically approximate observables such as vacuum energy and probability density. This approach addresses the complexity of solving Feynman's path integral formulation in quantum dynamics by minimizing the system's action through the Euler-Lagrange equation. The thesis also includes a comparative analysis of the accuracy of this method against quantum perturbation theory."
             }
         },
         "workPanel": {
