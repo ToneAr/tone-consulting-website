@@ -573,9 +573,6 @@ export default function About() {
 	return (
 		<PageBox>
 			<PageStack>
-
-				{/* Spacer */}
-				<Box sx={{height: '10vh'}} />
 				
 				{/* Title */}
 				<TitleCard style={{...compAnimationForTitleCard}} />

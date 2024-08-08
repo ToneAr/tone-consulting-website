@@ -31,65 +31,90 @@
                 "location" : "Swansea University",
                 "award" : "First Class Honors",
                 "thesisName" : "Demonstrating the derivation, coding and use of a PIMC Simulation",
-                "thesisDescription" : "My thesis outlines Feynman’s path integral formulation of quantum dynamics and the challenges of solving its infinite dimensional integrals. It then outlines the creation of a python program which uses the Metropolis Hastings Algorithm (aka ‘Monte Carlo’ algorithm) to find a numeric approximation of various observables of a given system like the vacuum energy or probability density of the system. This is done by solving Feynman’s equations using the Euler-Lagrange equation together with the Monte Carlo algorithm to minimize the system’s action. It concludes by comparing the accuracy of this method with methods like quantum perturbation theory."
+                "thesisDescription" : "Developed a Python program utilizing the Metropolis-Hastings (Monte Carlo) algorithm to numerically approximate observables such as vacuum energy and probability density. This approach addresses the complexity of solving Feynman's path integral formulation in quantum dynamics by minimizing the system's action through the Euler-Lagrange equation. The thesis also includes a comparative analysis of the accuracy of this method against quantum perturbation theory."
             }
         },
-        "workPanel" : {
-            "wolfram" : {
-                "name" : "Wolfram Research Europe Ltd",
-                "position" : "Technical Consultant",
-                "location" : "Oxfordshire",
-                "date" : "July 2022 - Present",
-                "experience" : {
-                    "scopeExp" : {
-                        "title" : "Scope and design solution projects",
-                        "desc" : "WIP",
-                        "label" : "Experience"
+        "workPanel": {
+            "wolfram": {
+                "name": "Wolfram Research Europe Ltd",
+                "position": "Technical Consultant",
+                "location": "Oxfordshire",
+                "date": "July 2022 - Present",
+                "experience": {
+                    "scopeExp": {
+                        "title": "Solution Architecture and Project Scoping",
+                        "label": "Experience",
+                        "desc": "Lead technical liaison for customer projects, translating requirements into comprehensive software architectures and technical specifications."
                     },
-                    "clientExp" : {
-                        "title" : "Meet with- and present to clients",
-                        "desc"  : "WIP",
-                        "label" : "Experience"
+                    "clientExp": {
+                        "title": "Stakeholder Management and Project Oversight",
+                        "desc": "Conducted regular project reviews with stakeholders, ensuring alignment with technical requirements and project milestones.",
+                        "label": "Experience"
                     },
-                    "teachExp" : {
-                        "title" : "Teach and present the Wolfram Language",
-                        "desc" : "WIP",
-                        "label" : "Experience"
+                    "softwareDeployment": {
+                        "title": "Multi-platform Software Deployment",
+                        "desc": "Experienced in deploying software solutions across various platforms, including web applications, desktop applications, and cloud-based services using technologies such as Docker, AWS, and Azure.",
+                        "label": "Experience"
                     },
-                    "cogniTool" : {
-                        "title" : "Medically certified cognitive testing web application ",
-                        "desc"  : "WIP",
-                        "label" : "Project"
+                    "teachExp": {
+                        "title": "Technical Training and Presentations",
+                        "desc": "Developed and delivered Wolfram Language training materials for diverse audiences, including universities and corporate clients.",
+                        "label": "Experience"
                     },
-                    "bpTool" : {
-                        "title" : "Desktop application for hypertensive patient tracking and treatment plan creation",
-                        "desc" : "WIP",
-                        "label" : "Project"
+                    "technicalContent": {
+                        "title": "Technical Content Development",
+                        "desc": "Authored technical content demonstrating Wolfram Language applications in physics, chemistry, and other fields. Created educational materials for WolframU, including lessons, showcases, and case studies.",
+                        "label": "Experience"
                     },
-                    "interventionsTool" : {
-                        "title" : "Importing, structuring and visualizing framework for Census 2012",
-                        "desc" : "WIP",
-                        "label" : "Project"
+                    "electronWLIntegration": {
+                        "title": "Electron-React-Wolfram Language Integration",
+                        "desc": "Bootstrapped an Electron-React boilerplate with locally deployed Wolfram Language sockets, facilitating seamless integration between web technologies and Wolfram's computational capabilities.",
+                        "label": "Project"
                     },
-                    "legalTool" : {
-                        "title" : "Workplace law desktop application to more effectively and efficiently compute client restructures",
-                        "desc" : "WIP",
-                        "label" : "Project"
+                    "cogniTool": {
+                        "title": "FDA-Compliant Cognitive Assessment Platform",
+                        "desc": "Engineered key components of a React-based web application with RESTful API, implementing rigorous testing protocols and software documentation for FDA certification.",
+                        "label": "Project"
                     },
-                    "fanTool" : {
-                        "title" : "API suite for industrial machine power-draw optimization and optimal machine combination",
-                        "desc" : "WIP",
-                        "label" : "Project"
+                    "bpTool": {
+                        "title": "Hypertension Management System",
+                        "desc": "Engineered an Electron-based desktop application that implements NICE hypertension guidelines for treatment decisions. Integrated EMIS Web API for secure patient data retrieval and manipulation, enabling automated blood pressure analysis and streamlined patient management within existing NHS IT infrastructure.",
+                        "label": "Project"
                     },
-                    "priceTool" : {
-                        "title" : "Interactive price fetching and displaying web application",
-                        "desc" : "WIP",
-                        "label" : "Project"
+                    "interventionsTool": {
+                        "title": "Population Data Analytics Framework",
+                        "desc": "Developed machine learning models for predictive analytics using census and ACORN data, focusing on healthcare interventions for an NHS Trust.",
+                        "label": "Project"
                     },
-                    "wasTool" : {
-                        "title" : "Wolfram Application Server deployment",
-                        "desc" : "WIP",
-                        "label" : "Project"
+                    "legalTool": {
+                        "title": "Corporate Restructuring Optimization Tool",
+                        "desc": "Architected a TypeScript/React desktop application for legal professionals, featuring advanced algorithms for company restructure optimization and automated reporting.",
+                        "label": "Project"
+                    },
+                    "fanTool": {
+                        "title": "Industrial Energy Optimization API",
+                        "desc": "Designed and implemented RESTful APIs for industrial machine power optimization, utilizing advanced mathematical modeling and custom algorithms.",
+                        "label": "Project"
+                    },
+                    "priceTool": {
+                        "title": "Real-time Data Visualization Web Applications",
+                        "desc": "Engineered responsive React-based web applications with Wolfram Language backend, focusing on efficient data structuring and dynamic UI components. Some applications included automated webinar report generation, internal price tables, and other internal tools.",
+                        "label": "Project"
+                    },
+                    "networkTool": {
+                        "title": "5G Network Optimization rApps",
+                        "desc": "Developed rApps for an Open-RAN compliant RAN Intelligent Controller, automating network parameter optimization for a new 5G network. Utilized React TS, Docker, Wolfram Web Engine, and Unix.",
+                        "label": "Project"
+                    },
+                    "wasTool": {
+                        "title": "Enterprise Application Server Deployment",
+                        "desc": "Orchestrated deployments of containerized Wolfram Engine instances across diverse environments, including on-premises servers and cloud platforms (AWS, Azure).",
+                        "label": "Project"
+                    },
+                    "repoMigration": {
+                        "title": "Large-scale Code Repository Migration",
+                        "desc": "Led the migration and redesign of a 20,000+ LOC repository, transforming legacy HTML/WL systems into modern web applications using React and Wolfram Cloud.",
+                        "label": "Project"
                     }
                 }
             }
