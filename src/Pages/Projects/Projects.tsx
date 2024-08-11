@@ -1,8 +1,15 @@
 import { Box, Grid, Link, Paper, Stack, Typography, useTheme } from "@mui/material";
 import axios from 'axios';
-
 import {PageBox, DisplayPanel, PageStack} from '../../Common/CommonElements';
 import React, { useEffect } from "react";
+// import { secret as amplifySecret } from '@aws-amplify/backend';
+
+export function secret(key: string) {
+  if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development') {
+    return process.env[`REACT_APP_${key}`];
+  }
+  return require('@aws-amplify/backend').secret(key);
+}
 
 export default function Projects() {
   const theme = useTheme();
@@ -18,7 +25,7 @@ export default function Projects() {
       const res = await axios.get('https://api.github.com/user/repos', {
         headers: {
           Accept: 'application/vnd.github+json',
-          Authorization: `Bearer ${process.env.REACT_APP_GH_TOKEN}`,
+          Authorization: `Bearer ${secret('GH_TOKEN')}`,
           'X-GitHub-Api-Version': '2022-11-28'
         }
       });
