@@ -1,0 +1,123 @@
+{
+    "home": {
+        "abstract" : "The world is in constant flux. Knowledge allows the traversal of its ever changing landscapes, shining a light at it's darkest corners."
+    },
+    "about":{
+        "abstract" : "Harnessing a rich blend of theoretical physics and multifaceted professional expertise, I am a dynamic consultant and developer committed to crafting innovative software solutions, underscored by a relentless pursuit of excellence and growth across a diverse range of sectors.",
+        "devPanel" : {
+            "experienceScope" : "Experience in both front- and back-end development for an extremely varied scope of projects, including building UIs and web-apps using React; Building and deploying online REST APIs using WL or JS; Or building desktop applications using WL, always strictly adhering to the agile SDLC methodology and DevOps lifecycle.",
+            "languageExperience" : "Having experience in both object oriented- and function programming owing to the symbolic functional programming within WL and the object-oriented programming of JS and C++",
+            "auxiliaryExperience" : "Almost all project also involved the building and maintaining of multiple auxiliary systems like SQL databases; Python and shell scripts; Docker containerisation scripts and others.",
+            "testingExperience" : "Projects were also supported by testing suites which included unit and integration tests (WL and JS), “robot” testing of front-end interfaces, and custom git scripts to validate any pushes or merges using the appropriate tests.",
+            "personalExperience": "Coding is my passion and so I undertake various personal project on my personal time including a POSsystem based on React, an algorithm trading bot in python and numerous coding challenges using C++."
+        },
+        "teachPanel" : {
+            "talks" : {
+                "showcase" : "Coding a Path Integral Monte Carlo Simulator in WL",
+                "caseStudy" : "Exploring Mars using NASA's MarsRoverAPI",
+                "tutorial" : "Customizing Mathematica using Stylesheets"
+            },
+            "teachingScope" : "Experience in writing technical content showcasing how the WL for various applications like physics, chemistry, and so on. The presentations followed 3 main types: Lessons, Showcases, Case studies. I wrote 3 unique talks, 1 of each type, and contributed to countless others, by either updating the content, updating or bug fixing demos, or modernizing old presentations.",
+            "teachingExperience" : "I also taught, WL101 and “Hands-on start to Mathematica” to hundreds of university students and private company engineers, both online and in person with workshop type tutorials or formal lectures on the WL with class sizes ranging anywhere from 1 to over 50. Some of the universities I visited include UCL, KCL, UCDublin, UOAberdeen among others."
+        },
+        "modelPanel" : {
+            "modelScope" : "Having a theoretical physics background, I excelled in any projects that included mathematical/simulation modeling and optimization, having simulated many physical systems inside python. ",
+            "modelExperience" : "My first customer project at WREL was an industrial machine setting optimization algorithm intended to find settings for a combination of machines as to minimize the required power. I provided the customer with multiple options of solution including a Lagrange multiplier local optimization and also a custom algorithm I developed for generating a machine settings combination tensor, extracting the surface of settings matching required output and then finding the minimum of that surface and also a method utilizing WL’s build in NMinimize function. A separate algorithm then had to be developed for the best choice of machines at a given output which again uses a bespoke algorithm I designed. Both of these were then delivered as online APIs."
+        },
+        "academicPanel" : {
+            "bsc" : {
+                "degreeName" : "BSc Theoretical Physics",
+                "date" : "October 2017 – June 2021",
+                "location" : "Swansea University",
+                "award" : "First Class Honors",
+                "thesisName" : "Demonstrating the derivation, coding and use of a PIMC Simulation",
+                "thesisDescription" : "Developed a Python program utilizing the Metropolis-Hastings (Monte Carlo) algorithm to numerically approximate observables such as vacuum energy and probability density. This approach addresses the complexity of solving Feynman's path integral formulation in quantum dynamics by minimizing the system's action through the Euler-Lagrange equation. The thesis also includes a comparative analysis of the accuracy of this method against quantum perturbation theory."
+            }
+        },
+        "workPanel": {
+            "wolfram": {
+                "name": "Wolfram Research Europe Ltd",
+                "position": "Technical Consultant",
+                "location": "Oxfordshire",
+                "date": "July 2022 - Present",
+                "experience": {
+                    "scopeExp": {
+                        "title": "Solution Architecture and Project Scoping",
+                        "label": "Experience",
+                        "desc": "Lead technical liaison for customer projects, translating requirements into comprehensive software architectures and technical specifications."
+                    },
+                    "clientExp": {
+                        "title": "Stakeholder Management and Project Oversight",
+                        "desc": "Conducted regular project reviews with stakeholders, ensuring alignment with technical requirements and project milestones.",
+                        "label": "Experience"
+                    },
+                    "softwareDeployment": {
+                        "title": "Multi-platform Software Deployment",
+                        "desc": "Experienced in deploying software solutions across various platforms, including web applications, desktop applications, and cloud-based services using technologies such as Docker, AWS, and Azure.",
+                        "label": "Experience"
+                    },
+                    "teachExp": {
+                        "title": "Technical Training and Presentations",
+                        "desc": "Developed and delivered Wolfram Language training materials for diverse audiences, including universities and corporate clients.",
+                        "label": "Experience"
+                    },
+                    "technicalContent": {
+                        "title": "Technical Content Development",
+                        "desc": "Authored technical content demonstrating Wolfram Language applications in physics, chemistry, and other fields. Created educational materials for WolframU, including lessons, showcases, and case studies.",
+                        "label": "Experience"
+                    },
+                    "electronWLIntegration": {
+                        "title": "Electron-React-Wolfram Language Integration",
+                        "desc": "Bootstrapped an Electron-React boilerplate with locally deployed Wolfram Language sockets, facilitating seamless integration between web technologies and Wolfram's computational capabilities.",
+                        "label": "Project"
+                    },
+                    "cogniTool": {
+                        "title": "FDA-Compliant Cognitive Assessment Platform",
+                        "desc": "Engineered key components of a React-based web application with RESTful API, implementing rigorous testing protocols and software documentation for FDA certification.",
+                        "label": "Project"
+                    },
+                    "bpTool": {
+                        "title": "Hypertension Management System",
+                        "desc": "Engineered an Electron-based desktop application that implements NICE hypertension guidelines for treatment decisions. Integrated EMIS Web API for secure patient data retrieval and manipulation, enabling automated blood pressure analysis and streamlined patient management within existing NHS IT infrastructure.",
+                        "label": "Project"
+                    },
+                    "interventionsTool": {
+                        "title": "Population Data Analytics Framework",
+                        "desc": "Developed machine learning models for predictive analytics using census and ACORN data, focusing on healthcare interventions for an NHS Trust.",
+                        "label": "Project"
+                    },
+                    "legalTool": {
+                        "title": "Corporate Restructuring Optimization Tool",
+                        "desc": "Architected a TypeScript/React desktop application for legal professionals, featuring advanced algorithms for company restructure optimization and automated reporting.",
+                        "label": "Project"
+                    },
+                    "fanTool": {
+                        "title": "Industrial Energy Optimization API",
+                        "desc": "Designed and implemented RESTful APIs for industrial machine power optimization, utilizing advanced mathematical modeling and custom algorithms.",
+                        "label": "Project"
+                    },
+                    "priceTool": {
+                        "title": "Real-time Data Visualization Web Applications",
+                        "desc": "Engineered responsive React-based web applications with Wolfram Language backend, focusing on efficient data structuring and dynamic UI components. Some applications included automated webinar report generation, internal price tables, and other internal tools.",
+                        "label": "Project"
+                    },
+                    "networkTool": {
+                        "title": "5G Network Optimization rApps",
+                        "desc": "Developed rApps for an Open-RAN compliant RAN Intelligent Controller, automating network parameter optimization for a new 5G network. Utilized React TS, Docker, Wolfram Web Engine, and Unix.",
+                        "label": "Project"
+                    },
+                    "wasTool": {
+                        "title": "Enterprise Application Server Deployment",
+                        "desc": "Orchestrated deployments of containerized Wolfram Engine instances across diverse environments, including on-premises servers and cloud platforms (AWS, Azure).",
+                        "label": "Project"
+                    },
+                    "repoMigration": {
+                        "title": "Large-scale Code Repository Migration",
+                        "desc": "Led the migration and redesign of a 20,000+ LOC repository, transforming legacy HTML/WL systems into modern web applications using React and Wolfram Cloud.",
+                        "label": "Project"
+                    }
+                }
+            }
+        }
+    }
+}

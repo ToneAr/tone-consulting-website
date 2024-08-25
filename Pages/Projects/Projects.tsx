@@ -4,19 +4,17 @@ import {PageBox, DisplayPanel, PageStack} from '../../Common/CommonElements';
 import React, { useEffect } from "react";
 // import { secret as amplifySecret } from '@aws-amplify/backend';
 
-function secret(key: string) {
-  console.log(import.meta.env.DEV);
-  
-  return (
-    import.meta.env.NODE_ENV === 'test'
-    || import.meta.env.DEV
-  ) ? import.meta.env[`VITE_${key}`]
-      : ''
+export function secret(key: string) {
+  if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development') {
+    return process.env[`REACT_APP_${key}`];
+  }
+  return ""
+  // require('@aws-amplify/backend').secret(key);
 }
 
 export default function Projects() {
   const theme = useTheme();
-  const [ghData, setGhData] = React.useState<object | null>(null);
+  const [ghData, setGhData] = React.useState<any>(null);
 
   useEffect(() => {
     document.title = "TONE : Projects";
@@ -24,9 +22,7 @@ export default function Projects() {
   }, []);
 
   useEffect(() => {
-    console.log(secret('GH_TOKEN'));
     const getGhData = async () => {
-      console.log(`Bearer ${secret('GH_TOKEN')}`);
       const res = await axios.get('https://api.github.com/user/repos', {
         headers: {
           Accept: 'application/vnd.github+json',
@@ -38,8 +34,8 @@ export default function Projects() {
       return res;
     };
     getGhData();
-  }, [setGhData])
-
+  }, [])
+  console.log(ghData);
   return (
     <PageBox>
         
@@ -59,7 +55,7 @@ export default function Projects() {
 
           <Grid container spacing={5} sx={{width: "90%"}}>
             {ghData ? 
-             ghData.data?.map((o)=>{
+             ghData.data.map((o: any)=>{
               return (o.private ? null :
                 <Grid item xs={6}>
                   <DisplayPanel sx={{width: "90%", p: 0, overflow: 'hidden' }}>
