@@ -1,9 +1,9 @@
-import { Box, Grow, Paper, Stack, Typography, useTheme } from "@mui/material";
-import { animated, easings, useInView, useSpring, useTransition } from "react-spring";
+import { Box, Paper, Stack, Typography, useTheme } from "@mui/material";
+import { animated, easings, useInView, useSpring } from "@react-spring/web";
 import dayForestImg from '../Resources/daytime-forest.jpg';
 import nightForestImg from '../Resources/nighttime-forest.jpg';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { useState } from "react";
+import { PropsWithChildren } from "react";
 
 type props = {
   children?: JSX.Element[] | JSX.Element,
@@ -78,7 +78,7 @@ function DisplayPanel ( {className = "paper", elevation = 8, ...props}: any ) {
       // y: isInView ? 0 : 80,
       config: {
         duration: 200,
-        easing: easings.easeInSine
+         easing: easings.easeInSine
       },
     })
 

@@ -1,18 +1,14 @@
-import ReactDOM from 'react-dom/client';
-import {
-	createBrowserRouter,
-	RouterProvider,
-} from "react-router-dom";
-
-import './CSS/index.css';
-
-import App from './App';
-import Home from './Pages/Home/Home';
-import ErrorPage from "./Common/ErrorPage";
-import About from "./Pages/About/About";
-import Projects from "./Pages/Projects/Projects";
-import Blog from "./Pages/Blog/Blog";
-import Music from "./Pages/Music/Music";
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App.tsx'
+import './CSS/index.css'
+import ErrorPage from './Common/ErrorPage.tsx';
+import Home from './Pages/Home/Home.tsx';
+import About from './Pages/About/About.tsx';
+import Projects from './Pages/Projects/Projects.tsx';
+import Blog from './Pages/Blog/Blog.tsx';
+import Music from './Pages/Music/Music.tsx';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter([
 	{path: "/",
@@ -38,8 +34,8 @@ const router = createBrowserRouter([
 	},
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(
-	<RouterProvider router={router} />
-);
-
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>
+)

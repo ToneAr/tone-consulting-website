@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import { Box, Grid, Paper, Stack, Typography, useTheme } from '@mui/material';
-import { useSpring, animated, useSprings } from "react-spring";
+import { useSpring, animated, useSprings } from "@react-spring/web";
 import { easings } from '@react-spring/web';
 import WarningIcon from '@mui/icons-material/Warning';
 import stringData from '../../Resources/raw-strings.json';
