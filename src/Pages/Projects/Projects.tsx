@@ -1,4 +1,4 @@
-import { Box, Grid, Link, Paper, Stack, Typography, useTheme } from "@mui/material";
+import { Grid, Typography, useTheme } from "@mui/material";
 import axios from 'axios';
 import {PageBox, DisplayPanel, PageStack} from '../../Common/CommonElements';
 import React, { useEffect } from "react";
@@ -16,7 +16,7 @@ function secret(key: string) {
 
 export default function Projects() {
   const theme = useTheme();
-  const [ghData, setGhData] = React.useState<object | null>(null);
+  const [ghData, setGhData] = React.useState<any[] | null>(null);
 
   useEffect(() => {
     document.title = "TONE : Projects";
@@ -27,15 +27,16 @@ export default function Projects() {
     console.log(secret('GH_TOKEN'));
     const getGhData = async () => {
       console.log(`Bearer ${secret('GH_TOKEN')}`);
-      const res = await axios.get('https://api.github.com/user/repos', {
+      return await axios.get('https://api.github.com/user/repos', {
         headers: {
           Accept: 'application/vnd.github+json',
           Authorization: `Bearer ${secret('GH_TOKEN')}`,
           'X-GitHub-Api-Version': '2022-11-28'
         }
+      }).then((res) => {
+        setGhData(res.data);
+        return res;
       });
-      setGhData(res);
-      return res;
     };
     getGhData();
   }, [setGhData])
@@ -59,7 +60,7 @@ export default function Projects() {
 
           <Grid container spacing={5} sx={{width: "90%"}}>
             {ghData ? 
-             ghData.data?.map((o)=>{
+             ghData.map((o)=>{
               return (o.private ? null :
                 <Grid item xs={6}>
                   <DisplayPanel sx={{width: "90%", p: 0, overflow: 'hidden' }}>
