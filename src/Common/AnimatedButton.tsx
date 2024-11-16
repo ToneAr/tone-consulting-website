@@ -1,17 +1,26 @@
-import { Box, ButtonBase, Typography, useTheme } from "@mui/material";
-import React, { ReactElement, RefObject, useEffect, useRef, useState } from "react";
-import { animated, useSpring, useSpringRef } from "react-spring";
+import { Box, ButtonBase, SxProps, Typography, useTheme } from "@mui/material";
+import React, { CSSProperties, PropsWithChildren, ReactElement, useEffect, useState } from "react";
+import { animated, useSpring, useSpringRef } from "@react-spring/web";
 
-function AnimatedButton ( props : any ) : ReactElement {
+interface IAnimatedButton extends PropsWithChildren {
+	isSelected?: boolean;
+	isCompSelected?: boolean;
+	onClick?: () => void;
+	label?: string;
+	sx?: SxProps;
+	style?: CSSProperties;
+	textAlign?: 'center' | 'left' | 'right';
+}
+function AnimatedButton ( props : IAnimatedButton ) : ReactElement {
 
 	const theme = useTheme();
 	
 	const [isHovered, setIsHovered] = React.useState<boolean>(false);
-	const [isInitialized, setIsInitialized] = React.useState<boolean>(false);
+	// const [isInitialized, setIsInitialized] = React.useState<boolean>(false);
 	// const [angle, setAngle] = React.useState<number>(30);
 	const bgColor = theme.palette.mode === 'dark' ? '#01010177' : '#fff4';
 
-	let isSelected = props.isSelected ?? false;
+	const isSelected = props.isSelected ?? false;
 
 	const borderColor =
 		theme.palette.mode === 'dark'
@@ -57,14 +66,6 @@ function AnimatedButton ( props : any ) : ReactElement {
 	const fontAnimation = useSpring({
 		color: (isHovered || props.isSelected) ? fontHoverColor : fontColor
 	});
-
-	const handleMouseEnter = () => {
-		setIsHovered(true);
-	};
-	const handleMouseLeave = () => {
-		setIsHovered(false);
-	};
-
 	const AnimatedBox = animated(Box);
 	const AnimatedTypography = animated(Typography);
 
@@ -72,7 +73,6 @@ function AnimatedButton ( props : any ) : ReactElement {
 		return (init || isHovered || props.isCompSelected || props.isSelected)
 			? bgAnimation
 			: staticBgAnimation
-		
 	}
 
 	const [init, setInit] = useState<boolean>(false);
@@ -83,7 +83,7 @@ function AnimatedButton ( props : any ) : ReactElement {
 						linear-gradient(
 							45deg,
 							${bgColor} ${ isSelected ? -500 : isHovered ? 0 : 100}%,
-							${ theme.palette.mode ==='dark' ? theme.palette.primary.main : theme.palette.primary.light} ${isHovered ? 50 : 150}}%,
+							${theme.palette.mode ==='dark' ? theme.palette.primary.main : theme.palette.primary.light} ${isHovered ? 50 : 150}}%,
 							${bgColor} ${ isSelected ? -500 : isHovered ? 100 : 200}%
 						)
 					`,
@@ -106,8 +106,8 @@ function AnimatedButton ( props : any ) : ReactElement {
 				borderRadius: 4,
 				backgroundSize: '100% 100%',
 				...getBgAnimation(),
-				...props.sx,
-				...props.style
+				...props.style,
+				...props.sx as CSSProperties,
 			}}
 		>
 			<ButtonBase
@@ -122,8 +122,8 @@ function AnimatedButton ( props : any ) : ReactElement {
 					cursor: 'pointer',
 					...props.sx
 				}}
-				onMouseEnter={handleMouseEnter}
-				onMouseLeave={handleMouseLeave}
+				onMouseEnter={() => setIsHovered(true)}
+				onMouseLeave={() => setIsHovered(false)}
 				onClick={props.onClick}
 			>
 				<AnimatedTypography

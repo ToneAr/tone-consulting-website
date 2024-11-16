@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
-import { Box, Grid, Paper, Stack, Typography, useTheme } from '@mui/material';
-import { useSpring, animated, useSprings } from "react-spring";
-import { easings } from '@react-spring/web';
+import { useEffect, useState } from 'react';
+// import logo from './logo.svg';
+import { Box, Grid, Typography, useTheme } from '@mui/material';
+import { useSpring, animated } from "@react-spring/web";
+// import { easings } from '@react-spring/web';
 import WarningIcon from '@mui/icons-material/Warning';
 import stringData from '../../Resources/raw-strings.json';
 
@@ -10,7 +10,7 @@ import {
   PageBox,
   DisplayPanel,
   PageStack,
-  OutlinedPaper
+  // OutlinedPaper
 } from '../../Common/CommonElements';
 
 function Home() {
@@ -108,6 +108,10 @@ function Home() {
           <DisplayPanel>
               <Typography variant='h2' color={theme.palette.warning.main} textAlign={'center'}>
                 <WarningIcon sx={{fontSize: 120}}/><br/>This site is under construction
+                <Typography variant='h4' color={theme.palette.warning.main} textAlign={'center'}>
+                  Firefox users may experience issues with the site's styling and animations
+                  Use a chromium-based browser for the best experience
+                </Typography>
               </Typography>
           </DisplayPanel>
 

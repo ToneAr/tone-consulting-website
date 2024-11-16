@@ -1,12 +1,12 @@
-import { Box, ButtonBase, Paper, Stack, Typography, useTheme } from '@mui/material';
-import {PageBox, DisplayPanel, PageStack, OutlinedPaper} from '../../Common/CommonElements';
+import { Paper, Typography } from '@mui/material';
+import {PageBox, DisplayPanel, PageStack} from '../../Common/CommonElements';
 import { useEffect } from 'react';
-import React from 'react';
-import { useSpring, animated } from 'react-spring';
-import AnimatedButton from '../../Common/AnimatedButton';
+// import React from 'react';
+// import { useSpring, animated } from 'react-spring';
+// import AnimatedButton from '../../Common/AnimatedButton';
 
 export default function Music() {
-  const theme = useTheme();
+  // const theme = useTheme();
 
   useEffect(() => {
     document.title = "TONE : Music";

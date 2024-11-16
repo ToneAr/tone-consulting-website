@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from './Common/Navbar';
-import { CssBaseline, ScopedCssBaseline, ThemeProvider, createTheme, darkScrollbar, useMediaQuery, useTheme } from "@mui/material";
+import { /*CssBaseline, ScopedCssBaseline,*/ ThemeProvider, createTheme, useMediaQuery } from "@mui/material";
 import React from "react";
 
 import './CSS/App.css';

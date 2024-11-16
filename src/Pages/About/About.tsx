@@ -1,9 +1,9 @@
 //Imports
 	// Extensions
 import { Box, Grid, Paper, Stack, Typography, useTheme } from "@mui/material";
-import { useSpring, animated, useScroll } from '@react-spring/web';
+import { useSpring, animated/*, useScroll */} from '@react-spring/web';
 import Divider from '@mui/material/Divider';
-import { ReactElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 	// Custom Extensions
 import AnimatedButton from "../../Common/AnimatedButton";
 import { PageBox, DisplayPanel, PageStack, OutlinedPaper, DownArrow } from '../../Common/CommonElements';
@@ -16,39 +16,38 @@ import { PageBox, DisplayPanel, PageStack, OutlinedPaper, DownArrow } from '../.
 // import phoneIconDark from '../../Resources/dark-telephone.png';
 // import linkedInIconDark from '../../Resources/dark-social.png';
 // import mailIconDark from '../../Resources/dark-mail.png';
-import {ReactComponent as PhoneSVG } from '../../Resources/call.svg';
-import {ReactComponent as EmailSVG } from '../../Resources/message.svg';
-import {ReactComponent as LinkedInSVG } from '../../Resources/linkedin.svg';
-import {ReactComponent as GitHubSVG } from '../../Resources/github.svg';
+import { ReactComponent as PhoneSVG } from '../../Resources/call.svg';
+import { ReactComponent as EmailSVG } from '../../Resources/message.svg';
+import { ReactComponent as LinkedInSVG } from '../../Resources/linkedin.svg';
+import { ReactComponent as GitHubSVG } from '../../Resources/github.svg';
 // import linkedInIconDark from'../../Resources/dark-linkedin.png';
 // import githubIconDark from '../../Resources/dark-github.png';
 	// Data
 import stringData from '../../Resources/raw-strings.json';
-import { Padding } from "@mui/icons-material";
 
 function TitleCard ( props: any ) {
 	
 	const theme = useTheme();
 	const AnimatedTypography = animated(Typography);
-	const AnimatedBox = animated(Box);
+	// const AnimatedBox = animated(Box);
 
-	const { scrollYProgress } = useScroll();
-	const scrollSpring: any = useSpring({
-		from: {
-			opacity: 0.0
-		}
-		,
-		to: [{
-			opacity: 0.5
-		},{
-			opacity: 0.0
-		}],
-		loop: true,
-		delay: 5000,
-		config: {
-			duration: 2000
-		}
-	});
+	// const { scrollYProgress } = useScroll();
+	// const scrollSpring = useSpring({
+	// 	from: {
+	// 		opacity: 0.0
+	// 	}
+	// 	,
+	// 	to: [{
+	// 		opacity: 0.5
+	// 	},{
+	// 		opacity: 0.0
+	// 	}],
+	// 	loop: true,
+	// 	delay: 5000,
+	// 	config: {
+	// 		duration: 2000
+	// 	}
+	// });
 
 	function incrementSubtitle () {
 		setDisplayText({
@@ -113,7 +112,7 @@ function TitleCard ( props: any ) {
 	</>
 };
 
-function DevPanel ( props: any ) {
+function DevPanel () {
 	return <Grid container spacing={4.3} sx={{width: '100%'}}>
 	<Grid item xs={12}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',mb:-4, textAlign:'justify', p:2}}>
@@ -153,7 +152,7 @@ function DevPanel ( props: any ) {
 	</Grid>
 };
 
-function TeachPanel ( props: any ) {
+function TeachPanel ( ) {
 	const theme = useTheme();
 	return <Grid container spacing={4.3} sx={{width: '100%'}}>
 		<Grid item xs={12}>
@@ -213,7 +212,7 @@ function TeachPanel ( props: any ) {
 	</Grid>
 };
 
-function ModelPanel ( props: any ) {
+function ModelPanel ( ) {
 	return <Grid container spacing={4.3} sx={{width: '100%'}}>
 	<Grid item xs={12}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', mb:-4 , p:2}}>
@@ -454,7 +453,7 @@ function ContactCard ( props: any ) {
 			},
 			{text: '+(44) 747 868 2747',
 				href: 'tel:+447478682747',
-				icon: <PhoneSVG  fill={svgColor} width={svgWidth}/>
+				icon: <PhoneSVG fill={svgColor} width={svgWidth}/>
 			}],
 		},
 		links : {
@@ -553,7 +552,7 @@ export default function About() {
 	function handleThesisBtnClick ( ) : void {
 		setIsThesisSelected(!isThesisSelected)
 	};
-	function createHandleWorkBtnClick ( key : string ) : Function {
+	function createHandleWorkBtnClick ( key : string ) {
 		return () : void =>{
 			setExpSelected(
 				(expSelected === null || key !== expSelected)

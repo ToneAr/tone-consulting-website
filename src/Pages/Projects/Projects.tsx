@@ -1,12 +1,23 @@
-import { Box, Grid, Link, Paper, Stack, Typography, useTheme } from "@mui/material";
+import { Grid, Typography, useTheme } from "@mui/material";
 import axios from 'axios';
-
 import {PageBox, DisplayPanel, PageStack} from '../../Common/CommonElements';
 import React, { useEffect } from "react";
+// import { secret as amplifySecret } from '@aws-amplify/backend';
+
+function secret(key: string) {
+  console.log(import.meta.env.DEV);
+  
+  return (
+    true
+    // import.meta.env.NODE_ENV === 'test'
+    // || import.meta.env.DEV
+  ) ? import.meta.env[`VITE_${key}`]
+      : ''
+}
 
 export default function Projects() {
   const theme = useTheme();
-  const [ghData, setGhData] = React.useState<any>(null);
+  const [ghData, setGhData] = React.useState<any[] | null>(null);
 
   useEffect(() => {
     document.title = "TONE : Projects";
@@ -14,20 +25,23 @@ export default function Projects() {
   }, []);
 
   useEffect(() => {
+    console.log(secret('GH_TOKEN'));
     const getGhData = async () => {
-      const res = await axios.get('https://api.github.com/user/repos', {
+      console.log(`Bearer ${secret('GH_TOKEN')}`);
+      return await axios.get('https://api.github.com/user/repos', {
         headers: {
           Accept: 'application/vnd.github+json',
-          Authorization: `Bearer ${process.env.REACT_APP_GH_TOKEN}`,
+          Authorization: `Bearer ${secret('GH_TOKEN')}`,
           'X-GitHub-Api-Version': '2022-11-28'
         }
+      }).then((res) => {
+        setGhData(res.data);
+        return res;
       });
-      setGhData(res);
-      return res;
     };
     getGhData();
-  }, [])
-  console.log(ghData);
+  }, [setGhData])
+
   return (
     <PageBox>
         
@@ -47,7 +61,7 @@ export default function Projects() {
 
           <Grid container spacing={5} sx={{width: "90%"}}>
             {ghData ? 
-             ghData.data.map((o: any)=>{
+             ghData.map((o)=>{
               return (o.private ? null :
                 <Grid item xs={6}>
                   <DisplayPanel sx={{width: "90%", p: 0, overflow: 'hidden' }}>

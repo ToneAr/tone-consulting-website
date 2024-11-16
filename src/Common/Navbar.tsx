@@ -4,15 +4,13 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import NightsStayIcon from '@mui/icons-material/NightsStay';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { IconButton, useTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { animated, useSpring } from 'react-spring';
+import { animated, useSpring } from '@react-spring/web';
 
 
 interface IPageObjArray {
@@ -41,7 +39,7 @@ function Navbar({ colorMode } : {colorMode: any}) {
   const navigate = useNavigate();
   const theme = useTheme();
 
-  const [ show, setShow ] = useState<Boolean>(true);
+  // const [ show, setShow ] = useState<Boolean>(true);
   const [lastScrollY, setLastScrollY] = useState<number>(0);
 
   const [ styles, springApi ]  = useSpring(()=>({
