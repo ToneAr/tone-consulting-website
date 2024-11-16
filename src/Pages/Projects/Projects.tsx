@@ -5,8 +5,6 @@ import React, { useEffect } from "react";
 // import { secret as amplifySecret } from '@aws-amplify/backend';
 
 function secret(key: string) {
-  console.log(import.meta.env.DEV);
-  
   return (
     true
     // import.meta.env.NODE_ENV === 'test'
