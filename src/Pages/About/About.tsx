@@ -1,7 +1,7 @@
 //Imports
 	// Extensions
 import { Box, Grid, Paper, Stack, Typography, useTheme } from "@mui/material";
-import { useSpring, animated, useScroll } from '@react-spring/web';
+import { useSpring, animated/*, useScroll */} from '@react-spring/web';
 import Divider from '@mui/material/Divider';
 import { useEffect, useState } from "react";
 	// Custom Extensions
@@ -29,25 +29,25 @@ function TitleCard ( props: any ) {
 	
 	const theme = useTheme();
 	const AnimatedTypography = animated(Typography);
-	const AnimatedBox = animated(Box);
+	// const AnimatedBox = animated(Box);
 
-	const { scrollYProgress } = useScroll();
-	const scrollSpring = useSpring({
-		from: {
-			opacity: 0.0
-		}
-		,
-		to: [{
-			opacity: 0.5
-		},{
-			opacity: 0.0
-		}],
-		loop: true,
-		delay: 5000,
-		config: {
-			duration: 2000
-		}
-	});
+	// const { scrollYProgress } = useScroll();
+	// const scrollSpring = useSpring({
+	// 	from: {
+	// 		opacity: 0.0
+	// 	}
+	// 	,
+	// 	to: [{
+	// 		opacity: 0.5
+	// 	},{
+	// 		opacity: 0.0
+	// 	}],
+	// 	loop: true,
+	// 	delay: 5000,
+	// 	config: {
+	// 		duration: 2000
+	// 	}
+	// });
 
 	function incrementSubtitle () {
 		setDisplayText({
@@ -112,7 +112,7 @@ function TitleCard ( props: any ) {
 	</>
 };
 
-function DevPanel ( props: any ) {
+function DevPanel () {
 	return <Grid container spacing={4.3} sx={{width: '100%'}}>
 	<Grid item xs={12}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',mb:-4, textAlign:'justify', p:2}}>
@@ -152,7 +152,7 @@ function DevPanel ( props: any ) {
 	</Grid>
 };
 
-function TeachPanel ( props: any ) {
+function TeachPanel ( ) {
 	const theme = useTheme();
 	return <Grid container spacing={4.3} sx={{width: '100%'}}>
 		<Grid item xs={12}>
@@ -212,7 +212,7 @@ function TeachPanel ( props: any ) {
 	</Grid>
 };
 
-function ModelPanel ( props: any ) {
+function ModelPanel ( ) {
 	return <Grid container spacing={4.3} sx={{width: '100%'}}>
 	<Grid item xs={12}>
 	<OutlinedPaper sx={{width: '100%', height: '100%',textAlign: 'justify', mb:-4 , p:2}}>

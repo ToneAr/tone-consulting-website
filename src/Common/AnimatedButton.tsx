@@ -1,5 +1,5 @@
 import { Box, ButtonBase, SxProps, Typography, useTheme } from "@mui/material";
-import React, { CSSProperties, PropsWithChildren, ReactElement, useEffect, useState, useMemo } from "react";
+import React, { CSSProperties, PropsWithChildren, ReactElement, useEffect, useState } from "react";
 import { animated, useSpring, useSpringRef } from "@react-spring/web";
 
 interface IAnimatedButton extends PropsWithChildren {

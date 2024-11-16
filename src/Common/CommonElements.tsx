@@ -3,7 +3,7 @@ import { animated, easings, useInView, useSpring } from "@react-spring/web";
 import dayForestImg from '../Resources/daytime-forest.jpg';
 import nightForestImg from '../Resources/nighttime-forest.jpg';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { PropsWithChildren } from "react";
+// import { PropsWithChildren } from "react";
 
 type props = {
   children?: JSX.Element[] | JSX.Element,
@@ -45,7 +45,7 @@ function PageBox ( {className = "background-box", ...props}:props ) {
 };
 
 
-function DownArrow ( props : any ) {
+function DownArrow ( ) {
 	const AnimatedBox = animated(Box);
 	return <AnimatedBox sx={{textAlign: 'center'}}>
 		<Typography>
