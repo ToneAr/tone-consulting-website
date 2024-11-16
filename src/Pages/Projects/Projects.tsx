@@ -8,8 +8,9 @@ function secret(key: string) {
   console.log(import.meta.env.DEV);
   
   return (
-    import.meta.env.NODE_ENV === 'test'
-    || import.meta.env.DEV
+    true
+    // import.meta.env.NODE_ENV === 'test'
+    // || import.meta.env.DEV
   ) ? import.meta.env[`VITE_${key}`]
       : ''
 }
