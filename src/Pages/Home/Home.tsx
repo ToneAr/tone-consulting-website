@@ -108,6 +108,10 @@ function Home() {
           <DisplayPanel>
               <Typography variant='h2' color={theme.palette.warning.main} textAlign={'center'}>
                 <WarningIcon sx={{fontSize: 120}}/><br/>This site is under construction
+                <Typography variant='h4' color={theme.palette.warning.main} textAlign={'center'}>
+                  Firefox users may experience issues with the site's styling and animations
+                  Use a chromium-based browser for the best experience
+                </Typography>
               </Typography>
           </DisplayPanel>
 
