@@ -1,6 +1,6 @@
 # Tone.Consulting - Personal Website
 
-This is the repository containing the source for the [tone.consulting](tone.consulting) website.
+This is the repository containing the source for the [tone.consulting](https://tone.consulting) website.
 
 ## Developer setup
 
