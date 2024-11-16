@@ -39,7 +39,7 @@ function Navbar({ colorMode } : {colorMode: any}) {
   const navigate = useNavigate();
   const theme = useTheme();
 
-  const [ show, setShow ] = useState<Boolean>(true);
+  // const [ show, setShow ] = useState<Boolean>(true);
   const [lastScrollY, setLastScrollY] = useState<number>(0);
 
   const [ styles, springApi ]  = useSpring(()=>({

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
-import { Box, Grid, Paper, Stack, Typography, useTheme } from '@mui/material';
-import { useSpring, animated, useSprings } from "@react-spring/web";
-import { easings } from '@react-spring/web';
+import { useEffect, useState } from 'react';
+// import logo from './logo.svg';
+import { Box, Grid, Typography, useTheme } from '@mui/material';
+import { useSpring, animated } from "@react-spring/web";
+// import { easings } from '@react-spring/web';
 import WarningIcon from '@mui/icons-material/Warning';
 import stringData from '../../Resources/raw-strings.json';
 
@@ -10,7 +10,7 @@ import {
   PageBox,
   DisplayPanel,
   PageStack,
-  OutlinedPaper
+  // OutlinedPaper
 } from '../../Common/CommonElements';
 
 function Home() {
