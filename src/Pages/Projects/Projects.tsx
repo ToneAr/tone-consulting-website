@@ -23,9 +23,7 @@ export default function Projects() {
   }, []);
 
   useEffect(() => {
-    console.log(secret('GH_TOKEN'));
     const getGhData = async () => {
-      console.log(`Bearer ${secret('GH_TOKEN')}`);
       return await axios.get('https://api.github.com/user/repos', {
         headers: {
           Accept: 'application/vnd.github+json',
